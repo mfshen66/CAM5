@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{03EBEA7A-2CDE-4FA8-B99F-82423B099C0F}</ProjectGuid>
+    <RootNamespace>CAM</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>d:\CAM5</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>opengl32.lib glu32.lib vi.lib gp.lib mesh.lib gct.lib IGES.lib gp2d.lib smooth.lib al.lib %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>d:\CAM5</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>vi.lib;gp.lib;iges.lib;opengl32.lib;glu32.lib;gct.lib;$(ProjectDir)LM\lib\blas.lib;$(ProjectDir)LM\lib\f2c.lib;$(ProjectDir)LM\lib\lapack.lib;$(ProjectDir)LM\lib\tmglib.lib;$(ProjectDir)LM\lib\levmar.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalOptions>opengl32.lib glu32.lib vi.lib gp.lib image.lib mesh.lib gct.lib IGES.lib gp2d.lib smooth.lib %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>vi.lib;gp.lib;iges.lib;opengl32.lib;glu32.lib;gct.lib;$(ProjectDir)LM\lib\blas.lib;$(ProjectDir)LM\lib\f2c.lib;$(ProjectDir)LM\lib\lapack.lib;$(ProjectDir)LM\lib\levmar.lib;$(ProjectDir)LM\lib\tmglib.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="CAM.reg" />
+    <None Include="ReadMe.txt" />
+    <None Include="res\analysis.bmp" />
+    <None Include="res\attrib.bmp" />
+    <None Include="res\attrib.ico" />
+    <None Include="res\ball.bmp" />
+    <None Include="res\barrel.bmp" />
+    <None Include="res\bitmap1.bmp" />
+    <None Include="res\buttons.bmp" />
+    <None Include="res\cad_view.ico" />
+    <None Include="res\cad_view_hc.ico" />
+    <None Include="res\CAM.ico" />
+    <None Include="res\CAM.rc2" />
+    <None Include="res\CAMDoc.ico" />
+    <None Include="res\cam_view.ico" />
+    <None Include="res\cam_view_hc.ico" />
+    <None Include="res\cancel.bmp" />
+    <None Include="res\clear.bmp" />
+    <None Include="res\consur1.bmp" />
+    <None Include="res\consur2.bmp" />
+    <None Include="res\cs.bmp" />
+    <None Include="res\display.bmp" />
+    <None Include="res\edit.bmp" />
+    <None Include="res\explorer.bmp" />
+    <None Include="res\explorer_hc.bmp" />
+    <None Include="res\filelarge.bmp" />
+    <None Include="res\filesmall.bmp" />
+    <None Include="res\flat.bmp" />
+    <None Include="res\icon1.ico" />
+    <None Include="res\minus.bmp" />
+    <None Include="res\mtview.bmp" />
+    <None Include="res\mtview_hc.bmp" />
+    <None Include="res\mt_view.ico" />
+    <None Include="res\mt_view_hc.ico" />
+    <None Include="res\main.bmp" />
+    <None Include="res\menuimages.bmp" />
+    <None Include="res\menuimages_hc.bmp" />
+    <None Include="res\nc.bmp" />
+    <None Include="res\ok.bmp" />
+    <None Include="res\parameter.bmp" />
+    <None Include="res\plus.bmp" />
+    <None Include="res\ribbon.mfcribbon-ms">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="res\ribbon1.mfcribbon-ms" />
+    <None Include="res\sim.bmp" />
+    <None Include="res\sketch.bmp" />
+    <None Include="res\sort.bmp" />
+    <None Include="res\sort_hc.bmp" />
+    <None Include="res\surface.bmp" />
+    <None Include="res\Toolbar.bmp" />
+    <None Include="res\Toolbar256.bmp" />
+    <None Include="res\toollib.bmp" />
+    <None Include="res\warning.bmp" />
+    <None Include="res\writelarge.bmp" />
+    <None Include="res\writesmall.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="API\AL_API.h" />
+    <ClInclude Include="API\GCT_API.h" />
+    <ClInclude Include="API\GP_API.h" />
+    <ClInclude Include="API\IGES_API.h" />
+    <ClInclude Include="API\VI_API.H" />
+    <ClInclude Include="CAM.h" />
+    <ClInclude Include="CAMDoc.h" />
+    <ClInclude Include="CAMView.h" />
+    <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="Dialogs.h" />
+    <ClInclude Include="DlgPane.h" />
+    <ClInclude Include="DocCmd.h" />
+    <ClInclude Include="IGES\IgesExport.h" />
+    <ClInclude Include="IGES\IgesImport.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="Mills.h" />
+    <ClInclude Include="Models.h" />
+    <ClInclude Include="Model\Feature.h" />
+    <ClInclude Include="Model\Part.h" />
+    <ClInclude Include="MTView.h" />
+    <ClInclude Include="Option.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SelSet.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Tools\Tools.h" />
+    <ClInclude Include="ViewCmd.h" />
+    <ClInclude Include="ViewTree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CAM.cpp" />
+    <ClCompile Include="CAMDoc.cpp" />
+    <ClCompile Include="CAMView.cpp" />
+    <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="Dialogs\AngDlg.cpp" />
+    <ClCompile Include="Dialogs\BallToolDlg.cpp" />
+    <ClCompile Include="Dialogs\BarrelToolDlg.cpp" />
+    <ClCompile Include="Dialogs\CCGDlg.cpp" />
+    <ClCompile Include="Dialogs\CFGDlg.cpp" />
+    <ClCompile Include="Dialogs\ChkDlg.cpp" />
+    <ClCompile Include="Dialogs\ColorDlg.cpp" />
+    <ClCompile Include="Dialogs\CombDlg.cpp" />
+    <ClCompile Include="Dialogs\ConDlg.cpp" />
+    <ClCompile Include="Dialogs\CPDlg.cpp" />
+    <ClCompile Include="Dialogs\CurExtDlg.cpp" />
+    <ClCompile Include="Dialogs\CurPtsDlg.cpp" />
+    <ClCompile Include="Dialogs\CurSmthDlg.cpp" />
+    <ClCompile Include="Dialogs\DevDlg.cpp" />
+    <ClCompile Include="Dialogs\EllDlg.cpp" />
+    <ClCompile Include="Dialogs\FilletCurDlg.cpp" />
+    <ClCompile Include="Dialogs\FlatToolDlg.cpp" />
+    <ClCompile Include="Dialogs\IsoCurDlg.cpp" />
+    <ClCompile Include="Dialogs\LenDlg.cpp" />
+    <ClCompile Include="Dialogs\MachineDlg.cpp" />
+    <ClCompile Include="Dialogs\MirrorDlg.cpp" />
+    <ClCompile Include="Dialogs\ModelDlg.cpp" />
+    <ClCompile Include="Dialogs\MoveDlg.cpp" />
+    <ClCompile Include="Dialogs\OptionDlg.cpp" />
+    <ClCompile Include="Dialogs\PDesignDlg.cpp" />
+    <ClCompile Include="Dialogs\PicDlg.cpp" />
+    <ClCompile Include="Dialogs\RAADlg.cpp" />
+    <ClCompile Include="Dialogs\RefPtDlg.cpp" />
+    <ClCompile Include="Dialogs\RevDlg.cpp" />
+    <ClCompile Include="Dialogs\RHDlg.cpp" />
+    <ClCompile Include="Dialogs\RotDlg.cpp" />
+    <ClCompile Include="Dialogs\ScaleDlg.cpp" />
+    <ClCompile Include="Dialogs\SCGDlg.cpp" />
+    <ClCompile Include="Dialogs\SurSmthDlg.cpp" />
+    <ClCompile Include="Dialogs\SwpDlg.cpp" />
+    <ClCompile Include="Dialogs\TLibDlg.cpp" />
+    <ClCompile Include="Dialogs\VecDlg.cpp" />
+    <ClCompile Include="Dialogs\WaitDlg.cpp" />
+    <ClCompile Include="Dialogs\WidthDlg.cpp" />
+    <ClCompile Include="Dialogs\XYZDlg.cpp" />
+    <ClCompile Include="DlgPane.cpp" />
+    <ClCompile Include="DocCmd\DrawArc.cpp" />
+    <ClCompile Include="DocCmd\DrawBC.cpp" />
+    <ClCompile Include="DocCmd\DrawCir.cpp" />
+    <ClCompile Include="DocCmd\DrawLin.cpp" />
+    <ClCompile Include="DocCmd\DrawPt.cpp" />
+    <ClCompile Include="DocCmd\DynSpln.cpp" />
+    <ClCompile Include="DocCmd\ModSurCPt.cpp" />
+    <ClCompile Include="DocCmd\TrimCur.cpp" />
+    <ClCompile Include="IGES\IgesExport.cpp" />
+    <ClCompile Include="IGES\IgesImport.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="Mill\CP.cpp" />
+    <ClCompile Include="Mill\Machine.cpp" />
+    <ClCompile Include="Mill\Mill.cpp" />
+    <ClCompile Include="Mill\Path.cpp" />
+    <ClCompile Include="Mill\Sim.cpp" />
+    <ClCompile Include="Mill\Sim5.cpp" />
+    <ClCompile Include="Mill\Step.cpp" />
+    <ClCompile Include="Mill\TGroup.cpp" />
+    <ClCompile Include="Mill\TLib.cpp" />
+    <ClCompile Include="Mill\Tool.cpp" />
+    <ClCompile Include="Mill\TRS.cpp" />
+    <ClCompile Include="Mill\TSubGroup.cpp" />
+    <ClCompile Include="Model\CutSur.cpp" />
+    <ClCompile Include="Model\DCurve.cpp" />
+    <ClCompile Include="Model\DLoop.cpp" />
+    <ClCompile Include="Model\DNAVI.CPP" />
+    <ClCompile Include="Model\Feature.cpp" />
+    <ClCompile Include="Model\Mark.cpp" />
+    <ClCompile Include="Model\Model.cpp" />
+    <ClCompile Include="Model\MPoint.cpp" />
+    <ClCompile Include="Model\Part.cpp" />
+    <ClCompile Include="Model\PCell.cpp" />
+    <ClCompile Include="Model\PCloud.cpp" />
+    <ClCompile Include="Model\PCube.cpp" />
+    <ClCompile Include="Model\Pic.cpp" />
+    <ClCompile Include="Model\PLine2D.cpp" />
+    <ClCompile Include="Model\RefCur.cpp" />
+    <ClCompile Include="Model\RefPlane.cpp" />
+    <ClCompile Include="Model\RefPt.cpp" />
+    <ClCompile Include="Model\RefSur.cpp" />
+    <ClCompile Include="Model\SND.cpp" />
+    <ClCompile Include="Model\STL.cpp" />
+    <ClCompile Include="Model\Triangle.cpp" />
+    <ClCompile Include="Model\TSM.cpp" />
+    <ClCompile Include="MTView.cpp" />
+    <ClCompile Include="Obj\Ar.cpp" />
+    <ClCompile Include="Obj\Array.cpp" />
+    <ClCompile Include="Obj\Carrier.cpp" />
+    <ClCompile Include="Obj\Error.cpp" />
+    <ClCompile Include="Obj\List.cpp" />
+    <ClCompile Include="Obj\Obj.cpp" />
+    <ClCompile Include="Obj\VO.cpp" />
+    <ClCompile Include="Option.cpp" />
+    <ClCompile Include="SelSet.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="Tools\Math2D.cpp" />
+    <ClCompile Include="Tools\PV.CPP" />
+    <ClCompile Include="Tools\ReadWrite.cpp" />
+    <ClCompile Include="Tools\Tools.cpp" />
+    <ClCompile Include="ViewCmd\Pan.cpp" />
+    <ClCompile Include="ViewCmd\Rotate.cpp" />
+    <ClCompile Include="ViewCmd\Zoom.cpp" />
+    <ClCompile Include="ViewCmd\ZoomBox.cpp" />
+    <ClCompile Include="ViewTree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CAM.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="CAM.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

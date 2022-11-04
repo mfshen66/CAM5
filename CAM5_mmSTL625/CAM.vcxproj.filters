@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\Dialogs">
+      <UniqueIdentifier>{1b459dda-9cc5-47ca-8e22-92f364079f3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Obj">
+      <UniqueIdentifier>{8a3bf19d-6bc8-4137-a92a-3d834700aa42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Model">
+      <UniqueIdentifier>{683ff4ae-def0-457c-ab33-dfdbc272c076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Tools">
+      <UniqueIdentifier>{6331fb3c-3df8-4622-8d1a-94cde766e5a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\DocCmd">
+      <UniqueIdentifier>{16a6333b-0da3-4148-9029-48e70d62c646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\ViewCmd">
+      <UniqueIdentifier>{3791daa9-c6a1-4c7f-b5fd-4aebcf15441b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\IGES">
+      <UniqueIdentifier>{d3cd350e-f1ae-417a-a439-8e544a492d5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Mill">
+      <UniqueIdentifier>{d5a99c9f-70d8-49ad-9498-89a801c10b89}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="CAM.reg" />
+    <None Include="res\explorer.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\explorer_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\sort.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\sort_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\menuimages.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\menuimages_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\buttons.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\filelarge.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\filesmall.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\main.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\writelarge.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\writesmall.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\ribbon.mfcribbon-ms">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CAM.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CAMDoc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CAM.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Toolbar.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Toolbar256.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\mt_view.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\mt_view_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\mtview.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\mtview_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\cad_view_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\cad_view.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\cam_view.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\cam_view_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\warning.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\cancel.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\ok.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\attrib.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\icon1.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\attrib.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\edit.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\ribbon1.mfcribbon-ms">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\sketch.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\surface.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\analysis.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\sim.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\nc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\consur1.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\consur2.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\barrel.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\flat.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\ball.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\toollib.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\bitmap1.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\plus.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\minus.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\display.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\clear.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\parameter.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\cs.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CAM.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildFrm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAMDoc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAMView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MTView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Dialogs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgPane.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SelSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DocCmd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Models.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewCmd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="API\VI_API.H">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="API\GCT_API.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="API\GP_API.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="API\IGES_API.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mills.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\Tools.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Part.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IGES\IgesImport.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Option.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Feature.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IGES\IgesExport.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="API\AL_API.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CAM.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildFrm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CAMDoc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CAMView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MTView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\XYZDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPane.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SelSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\VO.cpp">
+      <Filter>源文件\Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Ar.cpp">
+      <Filter>源文件\Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Array.cpp">
+      <Filter>源文件\Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Carrier.cpp">
+      <Filter>源文件\Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Error.cpp">
+      <Filter>源文件\Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\List.cpp">
+      <Filter>源文件\Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Obj.cpp">
+      <Filter>源文件\Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\CutSur.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\DNAVI.CPP">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Feature.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Model.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\MPoint.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Part.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\PCell.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\PCloud.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\PCube.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Pic.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\PLine2D.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\RefCur.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\RefPlane.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\RefPt.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\RefSur.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\Tools.cpp">
+      <Filter>源文件\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\PV.CPP">
+      <Filter>源文件\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\ReadWrite.cpp">
+      <Filter>源文件\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="DocCmd\TrimCur.cpp">
+      <Filter>源文件\DocCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="DocCmd\DrawArc.cpp">
+      <Filter>源文件\DocCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="DocCmd\DrawBC.cpp">
+      <Filter>源文件\DocCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="DocCmd\DrawLin.cpp">
+      <Filter>源文件\DocCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="DocCmd\DrawPt.cpp">
+      <Filter>源文件\DocCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="DocCmd\DynSpln.cpp">
+      <Filter>源文件\DocCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="DocCmd\ModSurCPt.cpp">
+      <Filter>源文件\DocCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewCmd\ZoomBox.cpp">
+      <Filter>源文件\ViewCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewCmd\Pan.cpp">
+      <Filter>源文件\ViewCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewCmd\Rotate.cpp">
+      <Filter>源文件\ViewCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewCmd\Zoom.cpp">
+      <Filter>源文件\ViewCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="IGES\IgesImport.cpp">
+      <Filter>源文件\IGES</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\TRS.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\Mill.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\Path.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\Sim.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\Sim5.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\Tool.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\VecDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\AngDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\ChkDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\CurPtsDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\LenDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\MoveDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\PicDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\RAADlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\RefPtDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\RotDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\ScaleDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\EllDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\CurExtDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\SwpDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\ConDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\RHDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\RevDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\DevDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\FilletCurDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\CCGDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="DocCmd\DrawCir.cpp">
+      <Filter>源文件\DocCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\WaitDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\CurSmthDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\TGroup.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\TSubGroup.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\TLib.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\TLibDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\FlatToolDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\BallToolDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\BarrelToolDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\Machine.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\CP.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mill\Step.cpp">
+      <Filter>源文件\Mill</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\PDesignDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\CPDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\MachineDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\ModelDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Triangle.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\MirrorDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\ColorDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\IsoCurDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\WidthDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Option.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Mark.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\SCGDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\CombDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="IGES\IgesExport.cpp">
+      <Filter>源文件\IGES</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\CFGDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\SurSmthDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\SND.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\Math2D.cpp">
+      <Filter>源文件\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\OptionDlg.cpp">
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\DCurve.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\DLoop.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\TSM.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\STL.cpp">
+      <Filter>源文件\Model</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CAM.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
