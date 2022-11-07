@@ -46,9 +46,11 @@ CPart::CPart()
 
 	// nt add 2022/6/15 临时
 	m_pGM = new GridModel() ;
-	strcpy_s(m_pGM->ModelName, 100, "d:\\2022-6Data625\\Plies Group.1_STLMeshData.stl") ;
+	strcpy_s(m_pGM->ModelName, 100, "C:\\Git\\CAM625\\2022-6Data625\\Plies Group.1_STLMeshData.stl") ;
 	m_pGM->stlDealInputFile() ;
-	strcpy_s(m_pGM->PreDataFileName, 256, "d:\\2022-6Data625\\Ply.2_OriginPath_202106121632.txt") ;
+	//strcpy_s(m_pGM->PreDataFileName, 256, "C:\\Git\\CAM625\\2022-6Data625\\Ply.2_OriginPath_202106121632.txt") ;
+	strcpy_s(m_pGM->PreDataFileName, 256, "C:\\Git\\CAM625\\2022-6Data625\\Ply.1_OriginPath_20200729090350.txt") ;
+	
 	m_pGM->GetInformationFromPath() ;
 
 	// nt add 2022/7/8 临时 测试很多情况返回-1.的问题

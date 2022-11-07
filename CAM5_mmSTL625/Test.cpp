@@ -186,7 +186,7 @@ void CCAMDoc::OnTest()
 		n += (polist->ENum[i] - polist->SNum[i] + 1); // 计算需要等距的点数？？？
 	double* chordal_height = new double[n + 1]; // 每个点的弓高
 
-	offset = polist->GeodesicOffsetNonFlexible(50, 1, pGM, chordal_height);
+	offset = polist->GeodesicOffsetNonFlexible(25, 1, pGM, chordal_height);
 
 	offset_2 = polist->GeodesicOffsetFlexible(50, 1, pGM, chordal_height);
 
@@ -199,14 +199,14 @@ void CCAMDoc::OnTest()
 		memcpy(p, &offset->PTrail[i], sizeof(PNT3D));
 		memcpy(q, &offset->PTrail[i + 1], sizeof(PNT3D));
 		AddLin(p, q);
-		memcpy(p, &offset_2->PTrail[i], sizeof(PNT3D));
-		memcpy(q, &offset_2->PTrail[i + 1], sizeof(PNT3D));
-		AddLin(p, q);
+		//memcpy(p, &offset_2->PTrail[i], sizeof(PNT3D));
+		//memcpy(q, &offset_2->PTrail[i + 1], sizeof(PNT3D));
+		//AddLin(p, q);
 	}
 	Redraw();
 
 	// 输出弓高数据至C:\\Test\\OutPutChordalHeight.txt。
-	OutPutChordalHeight(chordal_height, offset->ENum[1]);
+	//OutPutChordalHeight(chordal_height, offset->ENum[1]);
 
 	/*PNT3D p = { 0, 0, 0 }, begin = { 0, 0, -1 }, end = { 0, 0, 1 }, p1 = { 1, 1, 0 }, p2 = { -1, -1, 0 };
 	VEC3D v = { 0, 0, 1 };
