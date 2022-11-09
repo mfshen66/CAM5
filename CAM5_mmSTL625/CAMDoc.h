@@ -121,7 +121,7 @@ public:
 
 	// smf add 2022/10/09
 	// 输出弓高数据至C:\\Test\\OutPutChordalHeight.txt。
-	void OutPutChordalHeight(double* iChordalHeight, int iNum);
+	void OutPutChordalHeight(double* iChordalHeight, int iNumStart, int iNumEnd);
 
 protected: // 仅从序列化创建
 	CCAMDoc();

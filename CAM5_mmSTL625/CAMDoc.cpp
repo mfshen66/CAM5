@@ -6528,13 +6528,13 @@ void CCAMDoc::OnToolOptTri2()
 	return ;
 }
 
-void CCAMDoc::OutPutChordalHeight(double* iChordalHeight, int iNum)
+void CCAMDoc::OutPutChordalHeight(double* iChordalHeight, int iNumStart, int iNumEnd)
 {
 	FILE* fp = nullptr;
 	fopen_s(&fp, "C:\\Test\\OutPutChordalHeight.txt", "w+");
 	if (fp)
 	{
-		for (int i = 1; i <= iNum; i++)
+		for (int i = iNumStart; i <= iNumEnd; i++)
 		{
 			fprintf(fp, "ChordalHeight[%d] = %.6f mm\n", i, iChordalHeight[i]);
 		}

@@ -180,33 +180,40 @@ void CCAMDoc::OnTest()
 
 	GridModel* pGM = m_pPart->m_pGM;
 
-	POList polist = pGM->POLHead[1], offset = nullptr, offset_2 = nullptr;
+	POList polist = pGM->POLHead[2], offset = nullptr, offset_2 = nullptr;
+
 	int n = 0;
 	for (int i = 1; i <= (polist->DNum); i++)
-		n += (polist->ENum[i] - polist->SNum[i] + 1); // 计算需要等距的点数？？？
+		n += (polist->ENum[i] - polist->SNum[i] + 1); // 计算需要等距的点数
 	double* chordal_height = new double[n + 1]; // 每个点的弓高
 
-	offset = polist->GeodesicOffsetNonFlexible(25, 1, pGM, chordal_height);
+	offset = polist->GeodesicOffsetNonFlexible(25, -1, pGM, chordal_height);
 
-	offset_2 = polist->GeodesicOffsetFlexible(50, 1, pGM, chordal_height);
+	offset_2 = polist->GeodesicOffsetFlexible(25, 1, pGM, chordal_height);
 
-	int n_offset = 0;
+	int n_offset = 0, n_offset_2 = 0;
 	for (int i = 1; i <= (offset->DNum); i++)
-		n_offset += (offset->ENum[i] - offset->SNum[i] + 1); // 计算需要等距的点数？？？
-	for (size_t i = 1; i < n_offset; i++)
+		n_offset += (offset->ENum[i] - offset->SNum[i] + 1); // 计算需要等距的点数
+	for (int i = 1; i <= (offset_2->DNum); i++)
+		n_offset_2 += (offset_2->ENum[i] - offset_2->SNum[i] + 1); // 计算需要等距的点数
+	for (size_t i = offset->SNum[1]; i < n_offset; i++)
 	{
 		PNT3D p, q;
 		memcpy(p, &offset->PTrail[i], sizeof(PNT3D));
 		memcpy(q, &offset->PTrail[i + 1], sizeof(PNT3D));
 		AddLin(p, q);
-		//memcpy(p, &offset_2->PTrail[i], sizeof(PNT3D));
-		//memcpy(q, &offset_2->PTrail[i + 1], sizeof(PNT3D));
-		//AddLin(p, q);
+	}
+	for (size_t i = offset_2->SNum[1]; i < n_offset_2; i++)
+	{
+		PNT3D p, q;
+		memcpy(p, &offset_2->PTrail[i], sizeof(PNT3D));
+		memcpy(q, &offset_2->PTrail[i + 1], sizeof(PNT3D));
+		AddLin(p, q);
 	}
 	Redraw();
 
 	// 输出弓高数据至C:\\Test\\OutPutChordalHeight.txt。
-	//OutPutChordalHeight(chordal_height, offset->ENum[1]);
+	OutPutChordalHeight(chordal_height, offset->SNum[1], offset->ENum[1]);
 
 	/*PNT3D p = { 0, 0, 0 }, begin = { 0, 0, -1 }, end = { 0, 0, 1 }, p1 = { 1, 1, 0 }, p2 = { -1, -1, 0 };
 	VEC3D v = { 0, 0, 1 };
