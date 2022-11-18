@@ -140,15 +140,13 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 
 	// 非柔性滚子工作时的测地等距(不分段)
 	POList GeodesicOffsetNonFlexible(
-		double iDistance,
-		int iDir,  // 确保等距方向保持一致，iDir=1 或 iDir=-1.
+		double iDistance, // iDistance可为负值，符号代表等距方向
 		GridModel* iModel,	// 输入轨迹所依附模型, 用以获取法矢 
 		double* oChordalHeight); // smf add 2022/7/27
 
 	// 柔性滚子工作时的测地等距(不分段)
 	POList GeodesicOffsetFlexible(
-		double iDistance,
-		int iDir, // 确保等距方向保持一致，iDir=1 或 iDir=-1.
+		double iDistance, // iDistance可为负值，符号代表等距方向
 		GridModel* iModel,	// 输入轨迹所依附模型, 用以获取法矢
 		double* oChordalHeight); // smf add 2022/9/25
 	void Draw() ;

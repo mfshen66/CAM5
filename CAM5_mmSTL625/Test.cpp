@@ -187,9 +187,9 @@ void CCAMDoc::OnTest()
 		n += (polist->ENum[i] - polist->SNum[i] + 1); // 计算需要等距的点数
 	double* chordal_height = new double[n + 1]; // 每个点的弓高
 
-	offset = polist->GeodesicOffsetNonFlexible(25, -1, pGM, chordal_height);
+	offset = polist->GeodesicOffsetNonFlexible(-25, pGM, chordal_height);
 
-	offset_2 = polist->GeodesicOffsetFlexible(25, 1, pGM, chordal_height);
+	offset_2 = polist->GeodesicOffsetFlexible(25, pGM, chordal_height);
 
 	int n_offset = 0, n_offset_2 = 0;
 	for (int i = 1; i <= (offset->DNum); i++)
