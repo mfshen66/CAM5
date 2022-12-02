@@ -117,11 +117,101 @@ int mathPlnIntTri(
 double mathSquareDist(PNT3D p1, PNT3D p2);
 double mathSquareDist(STLPNT3D p1, STLPNT3D p2);
 
+// 2022/12/01 smf add 
+// 指代线段的端点
+enum SEGMENT
+{
+	Begin = 0,
+	End = +1
+};
+// 2022/12/01 smf add 
+// 缩短或延伸一条线段。iDist可为负值，iDist < 0 缩短；iDist > 0 延伸。
+// iBeginOrEnd: 0-起点；1-终点。
+// 返回值：0-线段过短，不可缩短；1-成功。
+int mathShortenOrLengthenSegmByDist(STLPNT3D &ioBegin, STLPNT3D &ioEnd, int iBeginOrEnd, double iDist);
+
 BOOL mathIsCoincidentPoint(STLPNT3D iPoint1, STLPNT3D iPoint2);
 // 两点间的距离
 double mathDist(STLPNT3D p1, STLPNT3D p2);
 
 void mathPrjPntPln(STLPNT3D iPoint, STLPNT3D iPointOfPlane, STLVECTOR iNormalOfPlane, STLPNT3D& oProjectPoint);
+
+void mathTransWorldVec3DByXYZ(VEC3D e1,
+	VEC3D e2,
+	VEC3D e3,
+	VEC3D world_vector,
+	VEC3D local_vector);
+
+int mathIntLinCyl(PNT3D begin,
+	VEC3D dir,
+	PNT3D pivot,
+	VEC3D axis,
+	double r,
+	double tol,
+	double ang,
+	PNT3D intpt1,
+	PNT3D intpt2);
+
+void mathTransLocalPnt3DByOXYZ(PNT3D origin,
+	VEC3D e1,
+	VEC3D e2,
+	VEC3D e3,
+	PNT3D local_point,
+	PNT3D world_point);
+
+int mathIntSegmCyl(PNT3D begin,
+	PNT3D end,
+	PNT3D pivot,
+	VEC3D axis,
+	double r,
+	double tol,
+	int* pn,
+	PNT3D p1,
+	PNT3D p2,
+	double* pt1,
+	double* pt2);
+
+//#define ERROR_SELF_INT  \
+//{	\
+//char s_i[10];			\
+//sprintf_s(s_i, "%d.", i);	\
+//char msg[30] = "等距线自相交! i = ";	\
+//strcat_s(msg, s_i);	\
+//CString str_msg(msg);	\
+//MessageBox(NULL, (LPCWSTR)str_msg, (LPCWSTR)L"警告", MB_OK);	\
+//segm_count++;	\
+//offset->ENum[1] = i - 1;	\
+//}
+#define ERROR_SELF_INT  \
+{	\
+char s_i[10];			\
+sprintf_s(s_i, "%d.", i);	\
+char msg[30] = "等距线自相交! i = ";	\
+strcat_s(msg, s_i);	\
+CString str_msg(msg);	\
+MessageBox(NULL, (LPCWSTR)str_msg, (LPCWSTR)L"警告", MB_OK);	\
+}
+
+// smf add 2022/11/01
+// 判断圆柱面上的点是否在延长段上:
+// iCylBegin, iCylEnd: 圆柱轴线起止点
+// iRadius: 圆柱半径
+BOOLEAN mathIsPointOnCylinderExtension(PNT3D iPoint, PNT3D iCylBegin, PNT3D iCylEnd, double iRadius);
+
+// smf add 2022/11/01
+// 线段与圆柱段求交: 
+// iSegmBegin, iSegmEnd: 线段的两个端点
+// iCylBegin, iCylEnd: 圆柱轴线起止点
+// iRadius: 圆柱半径
+// oNumIntPnts: 交点个数
+// oIntPnts: 交点数组
+BOOLEAN mathIntSegmCyl(
+	STLVECTOR iSegmBegin, STLVECTOR iSegmEnd,	//线段的两个端点
+	STLVECTOR iCylBegin, STLVECTOR iCylEnd,		// 圆柱轴线的起止点
+	double iRadius,								// 圆柱半径
+	double iTol,								// 容差 
+	int &oNumIntPnts,							// 交点个数
+	STLVECTOR *oIntPnts);						// 交点数组
 
 const double INVSQRT2 = 0.70710678118654752440;
 
@@ -142,9 +232,9 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	// 非柔性滚子工作时的测地等距(不分段)
 	POList MTIPathOriginList::GeodesicOffsetNonFlexible(
 		double iDistance, // iDistance可为负值，符号代表等距方向
-		GridModel* iModel	// 输入轨迹所依附模型, 用以获取法矢
-		/*double* oChordalHeight,*/ // 每一点处的弓高
-		/*int iMaxChordalHeight*/); // 弓高最大值
+		GridModel* iModel,	// 输入轨迹所依附模型, 用以获取法矢
+		double* oChordalHeight, // 每一点处的弓高
+		int iMaxChordalHeight); // 弓高最大值
 
 	// smf add 2022/9/25
 	// 柔性滚子工作时的测地等距(不分段)

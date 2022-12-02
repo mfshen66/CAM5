@@ -232,7 +232,7 @@ using namespace std;
 // 测地等距功能测试代码
 #include <iostream>
 using namespace std;
-int calltimes = 7;
+int calltimes = 3;
 void CCAMDoc::OnTest()
 {
 	//20221118版本
@@ -240,17 +240,17 @@ void CCAMDoc::OnTest()
 
 	POList polist = pGM->POLHead[2], offset = nullptr, offset_2 = nullptr;
 
-	const int max_chordal_height = 100; // 设置弓高阈值
+	const double max_chordal_height = 20; // 设置弓高阈值
 
 	int n = 0;
 	for (int i = 1; i <= (polist->DNum); i++)
 		n += (polist->ENum[i] - polist->SNum[i] + 1); // 计算需要等距的点数
 
-	//double* chordal_height = new double[n + 1]; // 每个点的弓高
-	//memset(chordal_height, 0, (n + 1) * sizeof(double));
+	double* chordal_height = new double[n + 1]; // 每个点的弓高
+	memset(chordal_height, 0, (n + 1) * sizeof(double));
 
 	double offsetDistance = calltimes * 10.0;
-	offset = polist->GeodesicOffsetNonFlexible(offsetDistance, pGM/*, chordal_height, max_chordal_height*/);
+	offset = polist->GeodesicOffsetNonFlexible(offsetDistance, pGM, chordal_height, max_chordal_height);
 	++calltimes;
 
 	int n_offset = 0;
@@ -262,6 +262,19 @@ void CCAMDoc::OnTest()
 		memcpy(p, &offset->PTrail[i], sizeof(PNT3D));
 		memcpy(q, &offset->PTrail[i + 1], sizeof(PNT3D));
 		AddLin(p, q);
+	}
+
+	for (size_t i = offset->SNum[1]; i < n_offset; i++)
+	{
+		if (i > offset->SNum[1] + 1)
+		{
+			STLVECTOR dir_last = vectorNormalize(offset->PTrail[i - 1] - offset->PTrail[i - 2]); // 前一条线段的方向
+			STLVECTOR dir_current = vectorNormalize(offset->PTrail[i] - offset->PTrail[i - 1]); // 当前线段的方向
+			if (dir_last * dir_current < 0)
+			{
+				ERROR_SELF_INT;
+			}
+		}
 	}
 	Redraw();
 	
