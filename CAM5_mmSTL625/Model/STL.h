@@ -192,6 +192,16 @@ CString str_msg(msg);	\
 MessageBox(NULL, (LPCWSTR)str_msg, (LPCWSTR)L"警告", MB_OK);	\
 }
 
+#define ERROR_CHORDAL_HEIGHT  \
+{	\
+char s_i[10];			\
+sprintf_s(s_i, "%d.", i);	\
+char msg[30] = "与曲面距离超过阈值! i = ";	\
+strcat_s(msg, s_i);	\
+CString str_msg(msg);	\
+MessageBox(NULL, (LPCWSTR)str_msg, (LPCWSTR)L"警告", MB_OK);	\
+}
+
 // smf add 2022/11/01
 // 判断圆柱面上的点是否在延长段上:
 // iCylBegin, iCylEnd: 圆柱轴线起止点
