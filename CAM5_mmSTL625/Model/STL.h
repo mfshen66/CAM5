@@ -13,6 +13,8 @@
 
 typedef struct {
 	double   x,y,z;
+	double inline norm(){return sqrt(x * x + y * y + z * z);
+	};
 } STLVECTOR;
 
 typedef struct {
@@ -135,6 +137,7 @@ BOOL mathIsCoincidentPoint(STLPNT3D iPoint1, STLPNT3D iPoint2);
 double mathDist(STLPNT3D p1, STLPNT3D p2);
 
 void mathPrjPntPln(STLPNT3D iPoint, STLPNT3D iPointOfPlane, STLVECTOR iNormalOfPlane, STLPNT3D& oProjectPoint);
+void mathPrjVecPln(STLVECTOR iVector, STLVECTOR iNormal, STLVECTOR &oPrjVec);
 
 void mathTransWorldVec3DByXYZ(VEC3D e1,
 	VEC3D e2,
@@ -171,17 +174,8 @@ int mathIntSegmCyl(PNT3D begin,
 	double* pt1,
 	double* pt2);
 
-//#define ERROR_SELF_INT  \
-//{	\
-//char s_i[10];			\
-//sprintf_s(s_i, "%d.", i);	\
-//char msg[30] = "等距线自相交! i = ";	\
-//strcat_s(msg, s_i);	\
-//CString str_msg(msg);	\
-//MessageBox(NULL, (LPCWSTR)str_msg, (LPCWSTR)L"警告", MB_OK);	\
-//segm_count++;	\
-//offset->ENum[1] = i - 1;	\
-//}
+STLPNT3D mathMidPoint(STLPNT3D iPoint1, STLPNT3D iPoint2); // 中点
+
 #define ERROR_SELF_INT  \
 {	\
 char s_i[10];			\
@@ -223,8 +217,25 @@ BOOLEAN mathIntSegmCyl(
 	int &oNumIntPnts,							// 交点个数
 	STLVECTOR *oIntPnts);						// 交点数组
 
-const double INVSQRT2 = 0.70710678118654752440;
+// smf add 2022/12/10
+// 根据三角形顶点的信息，找到三角形边上值等于给定值的一点
+// ioIndex-等值顶点的索引
+// 应该只返回0，1或2：
+// 0-三角形内部没有等值点；
+// 1-三角形的一个顶点为等值点，需遍历该顶点周围的所有三角形
+// 2-三角形边上有两个等值点
+int mathFindPointsByTriangleVertexInfo(
+	STLPNT3D iVertex1, STLPNT3D iVertex2, STLPNT3D iVertex3, 
+	double iInfo[3], // 三角形顶点处的信息（值）
+	double iRef, // 给定的参考值
+	double iTol, // 容差
+	STLPNT3D ioPoint[3], // 等值点
+	int* ioIndex); // 等值顶点的索引
 
+BOOL mathIsVectorDuringTwoVectors(STLVECTOR iVector1, STLVECTOR iVector2, STLVECTOR iVector);
+
+const double INVSQRT2 = 0.70710678118654752440;
+const double delta_l = 10.;
 struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	int TNum;					//条数标记
 	int DNum;					//段数标记
@@ -240,7 +251,7 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 
 	// smf add 2022/7/27
 	// 非柔性滚子工作时的测地等距(不分段)
-	POList MTIPathOriginList::GeodesicOffsetNonFlexible(
+	POList GeodesicOffsetNonFlexible(
 		double iDistance, // iDistance可为负值，符号代表等距方向
 		GridModel* iModel,	// 输入轨迹所依附模型, 用以获取法矢
 		double* oChordalHeight, // 每一点处的弓高
@@ -248,17 +259,31 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 
 	// smf add 2022/9/25
 	// 柔性滚子工作时的测地等距(不分段)
-	POList MTIPathOriginList::GeodesicOffsetFlexible(
+	POList GeodesicOffsetFlexible(
 		double iDistance, // iDistance可为负值，符号代表等距方向
 		GridModel* iModel	// 输入轨迹所依附模型, 用以获取法矢
 		/*double* oChordalHeight,*/  // 每一点处的弓高
 		/*int iMaxChordalHeight*/);  // 弓高最大值
 
+	POList GeodesicOffsetFlexibleNew(
+		double iDistance, // iDistance可为负值，符号代表等距方向
+		GridModel* iModel);	// 输入轨迹所依附模型, 用以获取法矢
+
+	POList GeodesicOffsetPreprocessing(/*STLVECTOR iOffsetDir, */GridModel* iModel);
+
 	void Draw() ;
 	double Snap(GridModel* pGM, FList fs[2], double ps[2][3], double tol, int& I, double& t, int& perp) ;
 	BOOL FindNextPoint(FRelated& ioFace, int& ioFaceNum, STLPNT3D& ioPointOnPlane, STLVECTOR iNormalOfPlane, STLVECTOR iLastDir);
+	BOOL FindNextTri(STLPNT3D iBegin, STLPNT3D iEnd, FList &ioNextTri);
 	BOOL IsPointAVertex(STLPNT3D iPoint, FaceList* iFace, int oIndex);
 	BOOL IsPointOnEdge(STLPNT3D iPoint, EList iEdge);
+	// smf add 2022/12/12
+	BOOL IsPointInTriangle(STLPNT3D iPoint, FList iTri);
+
+	// smf add 2022/11/03
+	int AddOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail, int iIndex); // 等距线添加一个关键点
+
+	void Destroy();
 };
 
 struct FaceRelated abstract {
