@@ -22,54 +22,58 @@ void CCAMDoc::OnTest()
 	POList polist = pGM->POLHead[42], offset = nullptr, offset_2 = nullptr;
 
 	const double max_chordal_height = 20; // 设置弓高阈值
-	POList polist1 = polist->GeodesicOffsetPreprocessing(pGM);
-	int n_polist1 = 0;
-	for (int i = 1; i <= (polist1->DNum); i++)
-		n_polist1 += (polist1->ENum[i] - polist1->SNum[i] + 1); // 计算需要等距的点数
-	for (size_t i = polist1->SNum[1]; i < n_polist1; i++)
+	//POList polist1 = polist->GeodesicOffsetPreprocessing(pGM);
+	//if (polist1)
+	//{
+	//	int n_polist1 = 0;
+	//	for (int i = 1; i <= (polist1->DNum); i++)
+	//		n_polist1 += (polist1->ENum[i] - polist1->SNum[i] + 1); // 计算需要等距的点数
+	//	for (size_t i = polist1->SNum[1]; i < n_polist1; i++)
+	//	{
+	//		PNT3D p, q;
+	//		memcpy(p, &polist1->PTrail[i], sizeof(PNT3D));
+	//		memcpy(q, &polist1->PTrail[i + 1], sizeof(PNT3D));
+	//		AddLin(p, q);
+	//	}
+	//	Redraw();
+	//	polist1->Destroy();
+	//}
+
+	POList polist2 = polist->GeodesicOffsetFlexibleNew(calltimes * 10, pGM);
+	if (polist2)
+	{
+		int n_polist2 = 0;
+		for (int i = 1; i <= (polist2->DNum); i++)
+			n_polist2 += (polist2->ENum[i] - polist2->SNum[i] + 1); // 计算需要等距的点数
+		for (size_t i = polist2->SNum[1] + 1; i < n_polist2; i++)
+		{
+			double dist = polist->CalGeodesicDistancePointToPl(pGM, polist2->FTrail[i], polist2->PTrail[i], 1);
+			PNT3D p, q;
+			memcpy(p, &polist2->PTrail[i], sizeof(PNT3D));
+			memcpy(q, &polist2->PTrail[i + 1], sizeof(PNT3D));
+			AddLin(p, q);
+		}
+		Redraw();
+		polist2->Destroy();
+	}
+
+	// 绘制三角形
+	/*
+	FList f1, f2;
+	f1 = pGM->stlGetFacetFromNum(6116);
+	f2 = pGM->stlGetFacetFromNum(5792);
+	for (size_t i = 0; i < 3; i++)
 	{
 		PNT3D p, q;
-		memcpy(p, &polist1->PTrail[i], sizeof(PNT3D));
-		memcpy(q, &polist1->PTrail[i + 1], sizeof(PNT3D));
+		memcpy(p, &f1->VertexUsed[i]->Coord, sizeof(PNT3D));
+		memcpy(q, &f1->VertexUsed[(i + 1) % 3]->Coord, sizeof(PNT3D));
+		AddLin(p, q);
+		memcpy(p, &f2->VertexUsed[i]->Coord, sizeof(PNT3D));
+		memcpy(q, &f2->VertexUsed[(i + 1) % 3]->Coord, sizeof(PNT3D));
 		AddLin(p, q);
 	}
-	//int n = 0;
-	//for (int i = 1; i <= (polist->DNum); i++)
-	//	n += (polist->ENum[i] - polist->SNum[i] + 1); // 计算需要等距的点数
+	*/
 
-	//double* chordal_height = new double[n + 1]; // 每个点的弓高
-	//memset(chordal_height, 0, (n + 1) * sizeof(double));
-
-	//double offsetDistance = -calltimes * 10.0;
-	//offset = polist->GeodesicOffsetFlexible(offsetDistance, pGM);
-	//++calltimes;
-
-	//int n_offset = 0;
-	//for (int i = 1; i <= (offset->DNum); i++)
-	//	n_offset += (offset->ENum[i] - offset->SNum[i] + 1); // 计算需要等距的点数
-	//for (size_t i = offset->SNum[1]; i < n_offset; i++)
-	//{
-	//	PNT3D p, q;
-	//	memcpy(p, &offset->PTrail[i], sizeof(PNT3D));
-	//	memcpy(q, &offset->PTrail[i + 1], sizeof(PNT3D));
-	//	AddLin(p, q);
-	//}
-
-	//for (size_t i = offset->SNum[1]; i < n_offset; i++)
-	//{
-	//	if (i > offset->SNum[1] + 1)
-	//	{
-	//		STLVECTOR dir_last = vectorNormalize(offset->PTrail[i - 1] - offset->PTrail[i - 2]); // 前一条线段的方向
-	//		STLVECTOR dir_current = vectorNormalize(offset->PTrail[i] - offset->PTrail[i - 1]); // 当前线段的方向
-	//		if (dir_last * dir_current < 0)
-	//		{
-	//			ERROR_SELF_INT;
-	//		}
-	//	}
-	//}
-	Redraw();
-	polist1->Destroy();
-	
 	//OutPutChordalHeight(chordal_height, offset->SNum[1], offset->ENum[1]);
 
 	//delete[] chordal_height;

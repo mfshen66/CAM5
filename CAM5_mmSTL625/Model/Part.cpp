@@ -78,25 +78,33 @@ CPart::CPart()
 		n = m_pGM->TrailNumDum ;
 
 		// 生成节点
-		if( n > 0 )
+		//if( n > 0 )
+		//{
+		//	for( i = 1 ; i <= m_pGM->TrailNumDum ; i++ )
+		//	//for( i = 2 ; i <= 2 ; i++ )
+		//	{
+		//		OL = m_pGM->POLHead[i] ;
+		//		for( j = 1, m = 0 ; j <= OL->DNum ; j++ )
+		//			m += (OL->ENum[j]-OL->SNum[j]+1) ;
+		//		for( j = 1 ; j <= m ; j++ )
+		//		{
+		//			// add jh 2022/8/18
+		//			//if(i == 11 || i == 20)
+		//			//	pRefPt = new CRefPt(0, 10, &OL->PTrail[j].x);
+		//			//else
+		//			//	pRefPt = new CRefPt(0, &OL->PTrail[j].x) ;
+		//			pRefPt = new CRefPt(0, &OL->PTrail[j].x);
+		//			m_features.Add(pRefPt);
+		//		}
+		//	}
+		//}
+		OL = m_pGM->POLHead[42];
+		for (j = 1, m = 0; j <= OL->DNum; j++)
+			m += (OL->ENum[j] - OL->SNum[j] + 1);
+		for (j = 1; j <= m; j++)
 		{
-			for( i = 1 ; i <= m_pGM->TrailNumDum ; i++ )
-			//for( i = 2 ; i <= 2 ; i++ )
-			{
-				OL = m_pGM->POLHead[i] ;
-				for( j = 1, m = 0 ; j <= OL->DNum ; j++ )
-					m += (OL->ENum[j]-OL->SNum[j]+1) ;
-				for( j = 1 ; j <= m ; j++ )
-				{
-					// add jh 2022/8/18
-					//if(i == 11 || i == 20)
-					//	pRefPt = new CRefPt(0, 10, &OL->PTrail[j].x);
-					//else
-					//	pRefPt = new CRefPt(0, &OL->PTrail[j].x) ;
-					pRefPt = new CRefPt(0, &OL->PTrail[j].x);
-					m_features.Add(pRefPt);
-				}
-			}
+			pRefPt = new CRefPt(0, &OL->PTrail[j].x);
+			m_features.Add(pRefPt);
 		}
 
 		// 简单等距
@@ -125,29 +133,29 @@ CPart::CPart()
 			//free(m_pGM->POLHead) ;
 			m_pGM->POLHead = OLs ;
 		}*/
-		if( n > 0 ) // 仅生成一条等距线
-		{
-			OLs = (POList*)malloc(sizeof(POList)*(n+2)) ;
-			for( i = 1 ; i <= n ; i++ )
-			{
-				OL = m_pGM->POLHead[i] ;
-				OLs[i] = OL ;
-			}
+		//if( n > 0 ) // 仅生成一条等距线
+		//{
+		//	OLs = (POList*)malloc(sizeof(POList)*(n+2)) ;
+		//	for( i = 1 ; i <= n ; i++ )
+		//	{
+		//		OL = m_pGM->POLHead[i] ;
+		//		OLs[i] = OL ;
+		//	}
 
-			OL = OLs[2] ; // 针对这条线等距!!!!!!!!!!!!!!!!!
-			OLs[n+1] = OL->DirectOffset(100.) ;
-			for( j = 1, m = 0 ; j <= OL->DNum ; j++ )
-				m += (OL->ENum[j]-OL->SNum[j]+1) ;
-			for( j = 1 ; j <= m ; j++ )
-			{
-				pRefCur = new CRefCur(&OL->PTrail[j].x, &OLs[n+1]->PTrail[j].x) ;
-				m_features.Add(pRefCur) ;
-			}
-			m_pGM->TrailNumDum += 1 ;
-			// free POLHead
-			free(m_pGM->POLHead) ;
-			m_pGM->POLHead = OLs ;
-		}
+		//	OL = OLs[2] ; // 针对这条线等距!!!!!!!!!!!!!!!!!
+		//	OLs[n+1] = OL->DirectOffset(100.) ;
+		//	for( j = 1, m = 0 ; j <= OL->DNum ; j++ )
+		//		m += (OL->ENum[j]-OL->SNum[j]+1) ;
+		//	for( j = 1 ; j <= m ; j++ )
+		//	{
+		//		pRefCur = new CRefCur(&OL->PTrail[j].x, &OLs[n+1]->PTrail[j].x) ;
+		//		m_features.Add(pRefCur) ;
+		//	}
+		//	m_pGM->TrailNumDum += 1 ;
+		//	// free POLHead
+		//	free(m_pGM->POLHead) ;
+		//	m_pGM->POLHead = OLs ;
+		//}
 	}
 }
 

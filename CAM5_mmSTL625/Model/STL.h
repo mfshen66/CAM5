@@ -5,9 +5,9 @@
 #define EPS12 1e-12
 #define STLTRI 60
 
-#define TOLLENGTH 1e-6
-#define TOLSQUARELENGTH 1e-12
-#define TOLANGLE 1e-6
+#define TOLLENGTH 1.e-3
+#define TOLSQUARELENGTH 1.e-6
+#define TOLANGLE 1.e-6
 
 #define INVERSQRT2 0.7071067811865475244
 
@@ -74,6 +74,7 @@ struct FaceList : public CVO
 	void GetPos(double gc[3], double p[3]) ;
 	int GetNumOfCV(FList f) ; // common vertex
 	int IsAdj(FList f) ;
+	int IsAdjVertex(FList f);
 	FList GetAdj(int i, int j) ;
 	FList GetAdjRayPass(double p[3], double dir[3], double tol) ; // nt add 2022/7/9
 	EList GetEdge(int i, int j) ;
@@ -224,7 +225,7 @@ BOOLEAN mathIntSegmCyl(
 // 0-三角形内部没有等值点；
 // 1-三角形的一个顶点为等值点，需遍历该顶点周围的所有三角形
 // 2-三角形边上有两个等值点
-int mathFindPointsByTriangleVertexInfo(
+int mathCalPointsByTriangleVertexInfo(
 	STLPNT3D iVertex1, STLPNT3D iVertex2, STLPNT3D iVertex3, 
 	double iInfo[3], // 三角形顶点处的信息（值）
 	double iRef, // 给定的参考值
@@ -246,6 +247,7 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	int *ENum;					//关键点数目末
 	POList PONext;
 
+	void Initialize();
 	POList Copy() ; // nt add 2022/7/10
 	POList DirectOffset(double d) ; // nt add 2022/7/10
 
@@ -282,7 +284,13 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 
 	// smf add 2022/11/03
 	int AddOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail, int iIndex); // 等距线添加一个关键点
+	void AddFirstPTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail);
+	void PushOnePtrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail); // 等距线最后添加一个关键点
+	void CalOffsetDir(int iIndex, int iDir, int iNum, STLVECTOR &oOffsetDir, STLVECTOR &oTanDir); // 计算等距方向
+	void GetRelatedFaceOfPTrail(int iIndex, FRelated oRelatedF, int &oRFNum);
 
+	// 点到多段线的测地距离
+	double CalGeodesicDistancePointToPl(GridModel *iModel, FList iFace, STLPNT3D iPoint, int iDir);
 	void Destroy();
 };
 
@@ -430,9 +438,16 @@ struct GridModel {
 	// 计算两点间的测地线, 加入优化部分
 	// opt = 0 no opt, opt = 1 normal opt, opt = 2 LM opt, opt = 3 normal&LM opt
 	int CalGeodesicLine(FList f1, double p1[3], FList f2, double p2[3], double tol, PL** polyline, int opt) ;
-	// jh add 2022/09/30
-	// 计算两点间的测地线, 对初始测地线方向做进一步优化
+	// added by jh, 2022/09/30
+	// 计算两点间的测地线, 对切割平面的方向做进一步优化
 	int CalGeodesicLineOpt(FList f1, double p1[3], FList f2, double p2[3], double tol, PL** polyline, int opt);
+	// added by jh
+	// 计算两点间的测地线, 末端点在 p21 与 p22 之间游动
+	int CalGeodesicLineFloatTail(FList f1, double p1[3], FList f2, double p2[3], double p21[3], double p22[3], double tol, PL** polyline, int opt);
+
+	// added by jh, 2022/11/24
+	// 计算两点间的测地线, 加入优化部分, 加入双向 dir 计算及 dir 的单步更新
+	int CalGeodesicLineNew(FList f1, double p1[3], FList f2, double p2[3], double tol, PL** polyline, int opt);
 	// jh add 2022/09/30
 	// 被 CalGeodesicLineOpt 调用
 	int CalGeodesicLineOptTheta(FList f1, double p1[3], FList f2, double p2[3], double theta, double tol, PL** polyline);
@@ -440,6 +455,16 @@ struct GridModel {
 	int CalGDInfo(POList polys[2], double tol, GDINFO** pGDI) ;
 	FList Pick(PNT3D pos, VEC3D dir, double r, PNT3D p, double* pz, PNT3D gc) ;
 	void Draw(void* pVI, int drawMode) ;
+	// jh add 2022/11/24
+	// 计算两点间的测地线, 将平均法矢确定的曲面法矢旋转 theta, 加入双向 dir 计算及 dir 的单步更新
+	int CalGeodesicLineThetaNew(FList f1, double p1[3], FList f2, double p2[3], double theta, double tol, PL** polyline, int opt);
+	static int calFuncNum;
+	// jh add 2022/11/24
+	// 计算两点间的测地线, 对切割平面的方向做进一步优化
+	int CalGeodesicLineOptNew(FList f1, double p1[3], FList f2, double p2[3], double tol, PL** polyline, int opt);
+	// added by jh, 2022/11/24
+	// 计算两点间的测地线, 末端点在 p21 与 p22 之间游动
+	int CalGeodesicLineFloatTailNew(FList f1, double p1[3], FList f2, double p2[3], double p21[3], double p22[3], double tol, PL** polyline, int opt);
 
 	int nPolyline ;
 	Pl* polylines[100] ;
