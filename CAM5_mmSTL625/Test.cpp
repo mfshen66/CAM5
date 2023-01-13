@@ -39,7 +39,7 @@ void CCAMDoc::OnTest()
 	//	polist1->Destroy();
 	//}
 
-	POList polist2 = polist->GeodesicOffsetFlexibleNew(calltimes * 10, pGM);
+	POList polist2 = polist->GeodesicOffsetFlexibleNew(calltimes++ * 10, pGM);
 	if (polist2)
 	{
 		int n_polist2 = 0;
