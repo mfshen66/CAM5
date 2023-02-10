@@ -14,7 +14,7 @@ using namespace std;
 // 测地等距功能测试代码
 #include <iostream>
 using namespace std;
-int calltimes = 1;
+int calltimes = 4;
 void CCAMDoc::OnTest()
 {
 	//20221118版本
@@ -40,12 +40,13 @@ void CCAMDoc::OnTest()
 	//}
 
 	POList polist2 = polist->GeodesicOffsetFlexibleNew(calltimes++ * 10, pGM);
+	//polist2->PolylineCheck();
 	if (polist2)
 	{
 		int n_polist2 = 0;
 		for (int i = 1; i <= (polist2->DNum); i++)
 			n_polist2 += (polist2->ENum[i] - polist2->SNum[i] + 1); // 计算需要等距的点数
-		for (size_t i = polist2->SNum[1] + 1; i < n_polist2; i++)
+		for (size_t i = polist2->SNum[1]; i < n_polist2; i++)
 		{
 			double dist = polist->CalGeodesicDistancePointToPl(pGM, polist2->FTrail[i], polist2->PTrail[i], 1);
 			PNT3D p, q;
@@ -55,6 +56,8 @@ void CCAMDoc::OnTest()
 		}
 		Redraw();
 		polist2->Destroy();
+		free(polist2);
+		polist2 = nullptr;
 	}
 
 	// 绘制三角形

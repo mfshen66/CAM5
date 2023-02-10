@@ -1,5 +1,6 @@
 #ifndef _STL_h_
 #define _STL_h_
+#include <vector>
 
 #define EPS06 1e-6
 #define EPS12 1e-12
@@ -237,6 +238,9 @@ BOOL mathIsVectorDuringTwoVectors(STLVECTOR iVector1, STLVECTOR iVector2, STLVEC
 
 const double INVSQRT2 = 0.70710678118654752440;
 const double delta_l = 10.;
+
+using namespace std;
+
 struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	int TNum;					//条数标记
 	int DNum;					//段数标记
@@ -248,6 +252,7 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	POList PONext;
 
 	void Initialize();
+	void Modify(vector<STLPNT3D> iPTrails, vector<STLVECTOR> iPNTrails, vector<FList> iFTrails, POList iPONext = nullptr);
 	POList Copy() ; // nt add 2022/7/10
 	POList DirectOffset(double d) ; // nt add 2022/7/10
 
@@ -277,10 +282,14 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	double Snap(GridModel* pGM, FList fs[2], double ps[2][3], double tol, int& I, double& t, int& perp) ;
 	BOOL FindNextPoint(FRelated& ioFace, int& ioFaceNum, STLPNT3D& ioPointOnPlane, STLVECTOR iNormalOfPlane, STLVECTOR iLastDir);
 	BOOL FindNextTri(STLPNT3D iBegin, STLPNT3D iEnd, FList &ioNextTri);
-	BOOL IsPointAVertex(STLPNT3D iPoint, FaceList* iFace, int oIndex);
-	BOOL IsPointOnEdge(STLPNT3D iPoint, EList iEdge);
+	static BOOL IsPointAVertex(STLPNT3D iPoint, FaceList* iFace, int oIndex);
+	static BOOL IsPointOnEdge(STLPNT3D iPoint, EList iEdge);
 	// smf add 2022/12/12
-	BOOL IsPointInTriangle(STLPNT3D iPoint, FList iTri);
+	static BOOL IsPointInTriangle(STLPNT3D iPoint, FList iTri);
+
+	// 检查是否有自交
+	void PolylineCheck();
+	BOOL DeleteOnePTrail(int iIndex);
 
 	// smf add 2022/11/03
 	int AddOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail, int iIndex); // 等距线添加一个关键点
@@ -465,6 +474,9 @@ struct GridModel {
 	// added by jh, 2022/11/24
 	// 计算两点间的测地线, 末端点在 p21 与 p22 之间游动
 	int CalGeodesicLineFloatTailNew(FList f1, double p1[3], FList f2, double p2[3], double p21[3], double p22[3], double tol, PL** polyline, int opt);
+
+	// smf add 2023/01/31
+	static bool IsPointOnBoundary(STLPNT3D iPoint, FList iSupport);
 
 	int nPolyline ;
 	Pl* polylines[100] ;
