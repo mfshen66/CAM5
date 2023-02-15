@@ -282,7 +282,7 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	double Snap(GridModel* pGM, FList fs[2], double ps[2][3], double tol, int& I, double& t, int& perp) ;
 	BOOL FindNextPoint(FRelated& ioFace, int& ioFaceNum, STLPNT3D& ioPointOnPlane, STLVECTOR iNormalOfPlane, STLVECTOR iLastDir);
 	BOOL FindNextTri(STLPNT3D iBegin, STLPNT3D iEnd, FList &ioNextTri);
-	static BOOL IsPointAVertex(STLPNT3D iPoint, FaceList* iFace, int oIndex);
+	static BOOL IsPointAVertex(STLPNT3D iPoint, FaceList* iFace, int &oIndex);
 	static BOOL IsPointOnEdge(STLPNT3D iPoint, EList iEdge);
 	// smf add 2022/12/12
 	static BOOL IsPointInTriangle(STLPNT3D iPoint, FList iTri);
@@ -290,6 +290,10 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	// 检查是否有自交
 	void PolylineCheck();
 	BOOL DeleteOnePTrail(int iIndex);
+
+	// 首末端延伸
+	void PolylineExtrapolate();
+	void Extrapolate(STLPNT3D iPoint1, STLPNT3D iPoint2, FList iSupport, int iIndexOfEdge);
 
 	// smf add 2022/11/03
 	int AddOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail, int iIndex); // 等距线添加一个关键点
