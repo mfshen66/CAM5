@@ -138,7 +138,9 @@ BOOL mathIsCoincidentPoint(STLPNT3D iPoint1, STLPNT3D iPoint2);
 // 两点间的距离
 double mathDist(STLPNT3D p1, STLPNT3D p2);
 
+// 点投影到三角形
 void mathPrjPntPln(STLPNT3D iPoint, STLPNT3D iPointOfPlane, STLVECTOR iNormalOfPlane, STLPNT3D& oProjectPoint);
+// 向量投影到三角形
 void mathPrjVecPln(STLVECTOR iVector, STLVECTOR iNormal, STLVECTOR &oPrjVec);
 
 void mathTransWorldVec3DByXYZ(VEC3D e1,
