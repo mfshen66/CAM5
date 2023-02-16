@@ -303,7 +303,7 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	// smf add 2022/11/03
 	int AddOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail, int iIndex); // 等距线添加一个关键点
 	void AddFirstPTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail);
-	void PushOnePtrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail); // 等距线最后添加一个关键点
+	void PushOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail); // 等距线最后添加一个关键点
 	void CalOffsetDir(int iIndex, int iDir, int iNum, STLVECTOR &oOffsetDir, STLVECTOR &oTanDir); // 计算等距方向
 	void GetRelatedFaceOfPTrail(int iIndex, FRelated oRelatedF, int &oRFNum);
 
