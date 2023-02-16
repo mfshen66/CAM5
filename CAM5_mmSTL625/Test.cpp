@@ -29,6 +29,7 @@ void CCAMDoc::OnTest()
 		if (polist2)
 		{
 			polist2->PolylineCheck();
+			polist2->PolylineExtrapolate(pGM);
 			//polist2->TNum = ++(pGM->TrailNumDum);
 			int n_polist2 = 0;
 			for (int i = 1; i <= (polist2->DNum); i++)

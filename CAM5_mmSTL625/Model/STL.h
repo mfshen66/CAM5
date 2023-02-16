@@ -89,6 +89,9 @@ struct FaceList : public CVO
 	int Draw2(void* pVI, int drawMode) ;
 };
 
+// 线段与线段求交
+int mathSegmIntSegm(STLPNT3D iBegin1, STLPNT3D iEnd1, STLPNT3D iBegin2, STLPNT3D iEnd2, STLPNT3D &oPoint1, STLPNT3D &oPoint2);
+
 // 线段与平面求交
 int mathSegmentIntPln(PNT3D iPntOfSegment1, PNT3D iPntOfSegment2,  // 线段的两个端点
 	PNT3D iPntOnPlane, VEC3D iNormPlane,  // 平面的法矢及平面上一点
@@ -294,8 +297,8 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	BOOL DeleteOnePTrail(int iIndex);
 
 	// 首末端延伸
-	void PolylineExtrapolate();
-	void Extrapolate(STLPNT3D iPoint1, STLPNT3D iPoint2, FList iSupport, int iIndexOfEdge);
+	void PolylineExtrapolate(GridModel *iModel);
+	void Extrapolate(STLPNT3D iPoint, STLVECTOR iDirection, FList iSupport, STLPNT3D &oPoint, FList &oFNext); // iDirection应为单位向量
 
 	// smf add 2022/11/03
 	int AddOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail, int iIndex); // 等距线添加一个关键点
