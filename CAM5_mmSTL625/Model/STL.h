@@ -181,6 +181,12 @@ int mathIntSegmCyl(PNT3D begin,
 	double* pt1,
 	double* pt2);
 
+// smf add 2023/02/24
+// 共面线段的交点计算
+int mathSegmIntSegmInFace(STLPNT3D iBegin1, STLPNT3D iEnd1, STLPNT3D iBegin2, STLPNT3D iEnd2, double iTol, STLPNT3D& oIntPoint);
+
+bool mathIsPointInSegm(STLPNT3D iPoint, STLPNT3D iBegin, STLPNT3D iEnd, double iTol);
+
 STLPNT3D mathMidPoint(STLPNT3D iPoint1, STLPNT3D iPoint2); // 中点
 
 #define ERROR_SELF_INT  \
@@ -242,7 +248,7 @@ int mathCalPointsByTriangleVertexInfo(
 BOOL mathIsVectorDuringTwoVectors(STLVECTOR iVector1, STLVECTOR iVector2, STLVECTOR iVector);
 
 const double INVSQRT2 = 0.70710678118654752440;
-const double delta_l = 10.;
+const double delta_l = 50.;
 
 using namespace std;
 
@@ -287,10 +293,12 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	double Snap(GridModel* pGM, FList fs[2], double ps[2][3], double tol, int& I, double& t, int& perp) ;
 	BOOL FindNextPoint(FRelated& ioFace, int& ioFaceNum, STLPNT3D& ioPointOnPlane, STLVECTOR iNormalOfPlane, STLVECTOR iLastDir);
 	BOOL FindNextTri(STLPNT3D iBegin, STLPNT3D iEnd, FList &ioNextTri);
+	BOOL FindNextTri2(STLPNT3D iBegin, STLPNT3D iEnd, FList &ioNextTri);
 	static BOOL IsPointAVertex(STLPNT3D iPoint, FaceList* iFace, int &oIndex);
 	static BOOL IsPointOnEdge(STLPNT3D iPoint, EList iEdge);
 	// smf add 2022/12/12
 	static BOOL IsPointInTriangle(STLPNT3D iPoint, FList iTri);
+	static bool IsSegmInTriangle(STLPNT3D iBegin, STLPNT3D iEnd, FList iTri);
 
 	// 检查是否有自交
 	void PolylineCheck();
@@ -310,6 +318,8 @@ struct MTIPathOriginList{//排序前路径可分段,排序后路径不可分段
 	// 点到多段线的测地距离
 	double CalGeodesicDistancePointToPl(GridModel *iModel, FList iFace, STLPNT3D iPoint, int iDir);
 	void Destroy();
+
+	void UpdateNormalAndFace(GridModel *iModel, double iTol = TOLLENGTH);
 };
 
 struct FaceRelated abstract {
@@ -401,9 +411,12 @@ struct GridModel {
 
 	// 拓扑关系建立
 	FList stlCreateFace(STLVECTOR *nv, STLPNT3D *p1, STLPNT3D *p2, STLPNT3D *p3,int tNum);
+	FList stlCreateFace(STLVECTOR *nv, STLPNT3D *p1, STLPNT3D *p2, STLPNT3D *p3, STLVECTOR *v1, STLVECTOR *v2, STLVECTOR *v3, int tNum);
 	FList stlFaceAlloc();
 	VList stlCreateVertex(VList *root, STLPNT3D *pt);
+	VList stlCreateVertex(VList *root, STLPNT3D *pt, STLVECTOR *vt);
 	VList stlSortTree(STLPNT3D *pt, VList *t);
+	VList stlSortTree(STLPNT3D *pt, STLVECTOR *vt, VList *t);
 	VList stlVertexAlloc();
 	EList stlCreateEdge(VList p1, VList p2);
 	EList stlEdgeAlloc();
@@ -423,6 +436,7 @@ struct GridModel {
 	double triCalArea(STLPNT3D p1, STLPNT3D p2, STLPNT3D p3);
 	double CalDistofPtAndFace(STLPNT3D p0, FList f);
 	FList FindClosetFace(STLPNT3D p0, double tol);
+	int Is_in_triangle(STLPNT3D p0, FList f, double tol);
 	STLPNT3D CalAllVertexNormalVector(STLPNT3D p1, double tol);	// add by wjq, 计算法矢
 
 	//20170825 ADD DAT文件处理
@@ -486,6 +500,8 @@ struct GridModel {
 
 	// smf add 2023/01/31
 	static bool IsPointOnBoundary(STLPNT3D iPoint, FList iSupport);
+
+	POList CreateMTIPathFromPL(PL* iPolyLine);
 
 	int nPolyline ;
 	Pl* polylines[100] ;

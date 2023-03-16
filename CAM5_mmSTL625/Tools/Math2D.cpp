@@ -1392,5 +1392,71 @@ int ccCorArc(PNT2D c1,
 
 	return 2 ;
 }
+
+//--------------------------------------------------------------
+// smf add 2023/02/21
+// 共面线段的交点计算
+int mathSegmIntSegmInFace(PNT3D iBegin1, PNT3D iEnd1, PNT3D iBegin2, PNT3D iEnd2, double iTol, PNT3D oIntPoint)
+{
+	VEC3D v1, v2, v_b1_b2;
+	for (size_t i = 0; i < 3; i++)
+	{
+		v1[i] = iEnd1[i] - iBegin1[i];
+		v2[i] = iEnd2[i] - iBegin2[i];
+		v_b1_b2[i] = iBegin2[i] - iBegin1[i];
+	}
+
+	double det_xy, det_yz, det_xz;
+
+	det_xy = mathDet22(v1[0], -v2[0], v1[1], -v2[1]);
+	det_yz = mathDet22(v1[1], -v2[1], v1[2], -v2[2]);
+	det_xz = mathDet22(v1[0], -v2[0], v1[2], -v2[2]);
+
+	double t1 = -1000, t2 = -1000;
+	if (det_xy < -iTol ||
+		det_xy > iTol)
+	{
+		double det_1 = mathDet22(v_b1_b2[0], -v2[0], v_b1_b2[1], -v2[1]);
+		t1 = det_1 / det_xy;
+		double det_2 = mathDet22(v1[0], v_b1_b2[0], v1[1], v_b1_b2[1]);
+		t2 = det_2 / det_xy;
+	}
+	else
+		if (det_yz < -iTol ||
+			det_yz > iTol)
+		{
+			double det_1 = mathDet22(v_b1_b2[1], -v2[1], v_b1_b2[2], -v2[2]);
+			t1 = det_1 / det_yz;
+			double det_2 = mathDet22(v1[1], v_b1_b2[1], v1[2], v_b1_b2[2]);
+			t2 = det_2 / det_yz;
+		}
+		else
+			if (det_xz < -iTol ||
+				det_xz > iTol)
+			{
+				double det_1 = mathDet22(v_b1_b2[0], -v2[0], v_b1_b2[2], -v2[2]);
+				t1 = det_1 / det_xz;
+				double det_2 = mathDet22(v1[0], v_b1_b2[0], v1[2], v_b1_b2[2]);
+				t2 = det_2 / det_xz;
+			}
+
+	if (t1 >= 0. && t1 <= 1. &&
+		t2 >= 0. && t2 <= 1.) // 交点在线段上
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			oIntPoint[i] = iBegin1[i] + t1 * v1[i];
+		}
+		return IDINT;
+	}
+	return IDNOINT;
+}
+
+// A的行列式，|A|
+double mathDet22(double a11, double a12, double a21, double a22)
+{
+	double det = a11 * a22 - a12 * a21;
+	return det;
+}
 ///////////////////////////////////////////////////////////////
 

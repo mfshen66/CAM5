@@ -24,4 +24,10 @@ int ccGetTP(PNT2D c1, double r1, PNT2D c2, double r2, PNT2D tp) ;
 int llCorArc(PNT2D b1, VEC2D dir1, PNT2D b2, VEC2D dir2, double tol, PNT2D p1, PNT2D p2, PNT2D p3, PNT2D cc, double* pr) ;
 int lcCorArc(PNT2D b, VEC2D dir, PNT2D c, double R, double tol, PNT2D p1, PNT2D p2, PNT2D p3, PNT2D cc, double* pr) ;
 int ccCorArc(PNT2D c1, double r1, PNT2D c2, double r2, double tol, PNT2D p1, PNT2D p2, PNT2D p3, PNT2D cc, double* pr) ;
+//-------------------------------------------------------------
+// smf add 2023/02/21
+// 两共面的线段求交
+int mathSegmIntSegmInFace(PNT3D iBegin1, PNT3D iEnd1, PNT3D iBegin2, PNT3D iEnd2, double iTol, PNT3D oIntPoint);
+
+double mathDet22(double a11, double a12, double a21, double a22); // A的行列式，|A|
 ///////////////////////////////////////////////////////////////

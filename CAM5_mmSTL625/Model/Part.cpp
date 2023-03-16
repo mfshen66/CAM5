@@ -46,7 +46,7 @@ CPart::CPart()
 
 	// nt add 2022/6/15 ÁÙÊ±
 	m_pGM = new GridModel() ;
-	strcpy_s(m_pGM->ModelName, 100, "C:\\Git\\CAM625\\2022-6Data625\\Plies Group.1_STLMeshData.stl") ;
+	strcpy_s(m_pGM->ModelName, 100, "C:\\Git\\CAM625\\2022-6Data625\\Plies Group.1_STLMeshData1.stl") ;
 	m_pGM->stlDealInputFile() ;
 	strcpy_s(m_pGM->PreDataFileName, 256, "C:\\Git\\CAM625\\2022-6Data625\\Ply.2_OriginPath_202106121632.txt") ;
 	//strcpy_s(m_pGM->PreDataFileName, 256, "C:\\Git\\CAM625\\2022-6Data625\\Ply.2_OriginPath_202106121632.txt") ;
@@ -98,7 +98,7 @@ CPart::CPart()
 		//		}
 		//	}
 		//}
-		OL = m_pGM->POLHead[42];
+		OL = m_pGM->POLHead[2];
 		for (j = 1, m = 0; j <= OL->DNum; j++)
 			m += (OL->ENum[j] - OL->SNum[j] + 1);
 		for (j = 1; j <= m; j++)
