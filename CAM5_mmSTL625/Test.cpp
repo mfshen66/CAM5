@@ -11,11 +11,6 @@
 #include <iostream>
 using namespace std;
 
-// 测地等距功能测试代码
-#include <iostream>
-using namespace std;
-int calltimes = 1;
-int TNum = 1;
 
 #define FOR_NO_VERTEX_NORMAL "Debug only! For STL has no vertex normal!"
 //#define FOR_VERTEX_NORMAL    "Debug only! For STL has vertex normal!"
@@ -28,11 +23,39 @@ int TNum = 1;
 #undef FOR_NO_VERTEX_NORMAL
 #endif // FOR_VERTEX_NORMAL
 
+#define POLYLINE_DISPLAY(L)									 \
+if(L) {														\
+	L->PolylineCheck();										\
+	int n_##L = 0;											\
+	for (int i = 1; i <= (L->DNum); i++)					\
+		n_##L += (L->ENum[i] - L->SNum[i] + 1);				\
+	for (size_t i = L->SNum[1]; i < n_##L; i++)				\
+	{														\
+		PNT3D p, q;											\
+		memcpy(p, &L->PTrail[i], sizeof(PNT3D));			\
+		memcpy(q, &L->PTrail[i + 1], sizeof(PNT3D));	\
+		AddLin(p, q);										\
+	}														\
+	Redraw();												\
+}
+
+#define POLYLINE_DESTROY(L) \
+if(L) {						\
+	L->Destroy();			\
+	free(L);				\
+	L=nullptr;				\
+}
+
+// 测地等距功能测试代码
+#include <iostream>
+using namespace std;
+int calltimes = 1;
+int TNum = 1;
 void CCAMDoc::OnTest()
 {
 	GridModel* pGM = m_pPart->m_pGM;
 	int n = pGM->TrailNumDum;
-	POList polist1 = nullptr, offset = nullptr, offset_2 = nullptr;
+	POList polist1 = nullptr;
 
 #ifdef FOR_NO_VERTEX_NORMAL
 	polist1 = pGM->POLHead[42];
@@ -52,49 +75,14 @@ void CCAMDoc::OnTest()
 	polist1 = pGM->CreateMTIPathFromPL(polyline);
 #endif // FOR_VERTEX_NORMAL
 
-		//POList polist1 = polist2->GeodesicOffsetPreprocessing(pGM);
 		POList polist2 = polist1->GeodesicOffsetFlexibleNew(calltimes++ * 10, pGM);
-		if (polist1)
-		{
-			polist1->PolylineCheck();
-			//polist2->TNum = ++(pGM->TrailNumDum);
-			int n_polist1 = 0;
-			for (int i = 1; i <= (polist1->DNum); i++)
-				n_polist1 += (polist1->ENum[i] - polist1->SNum[i] + 1); // 计算需要等距的点数
-			for (size_t i = polist1->SNum[1]; i < n_polist1; i++)
-			{
-				//double dist = polist->CalGeodesicDistancePointToPl(pGM, polist2->FTrail[i], polist2->PTrail[i], 1);
-				PNT3D p, q;
-				memcpy(p, &polist1->PTrail[i], sizeof(PNT3D));
-				memcpy(q, &polist1->PTrail[i + 1], sizeof(PNT3D));
-				AddLin(p, q);
-			}
-			Redraw();
-			polist1->Destroy();
-			free(polist1);
-			polist1 = nullptr;
-		}
+		POLYLINE_DISPLAY(polist1);
+#ifdef FOR_VERTEX_NORMAL
+		POLYLINE_DESTROY(polist1);
+#endif // FOR_NO_VERTEX_NORMAL
 
-		if (polist2)
-		{
-			polist2->PolylineCheck();
-			//polist2->TNum = ++(pGM->TrailNumDum);
-			int n_polist2 = 0;
-			for (int i = 1; i <= (polist2->DNum); i++)
-				n_polist2 += (polist2->ENum[i] - polist2->SNum[i] + 1); // 计算需要等距的点数
-			for (size_t i = polist2->SNum[1]; i < n_polist2; i++)
-			{
-				//double dist = polist->CalGeodesicDistancePointToPl(pGM, polist2->FTrail[i], polist2->PTrail[i], 1);
-				PNT3D p, q;
-				memcpy(p, &polist2->PTrail[i], sizeof(PNT3D));
-				memcpy(q, &polist2->PTrail[i + 1], sizeof(PNT3D));
-				AddLin(p, q);
-			}
-			Redraw();
-			polist2->Destroy();
-			free(polist2);
-			polist2 = nullptr;
-		}
+		POLYLINE_DISPLAY(polist2);
+		POLYLINE_DESTROY(polist2);
 
 	return;
 }
