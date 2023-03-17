@@ -262,6 +262,7 @@
     <ClInclude Include="DocCmd.h" />
     <ClInclude Include="IGES\IgesExport.h" />
     <ClInclude Include="IGES\IgesImport.h" />
+    <ClInclude Include="MacForTest.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Mills.h" />
     <ClInclude Include="Models.h" />

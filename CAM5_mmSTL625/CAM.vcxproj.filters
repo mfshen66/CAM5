@@ -286,6 +286,9 @@
     <ClInclude Include="API\AL_API.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MacForTest.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CAM.cpp">
