@@ -46,7 +46,7 @@ CPart::CPart()
 
 	// nt add 2022/6/15 ÁÙÊ±
 	m_pGM = new GridModel() ;
-	strcpy_s(m_pGM->ModelName, 100, "C:\\Git\\CAM625\\2022-6Data625\\Plies Group.1_STLMeshData1.stl") ;
+	strcpy_s(m_pGM->ModelName, 100, "C:\\Git\\CAM625\\2022-6Data625\\Plies Group.1_STLMeshData.stl") ;
 	m_pGM->stlDealInputFile() ;
 	strcpy_s(m_pGM->PreDataFileName, 256, "C:\\Git\\CAM625\\2022-6Data625\\Ply.2_OriginPath_202106121632.txt") ;
 	//strcpy_s(m_pGM->PreDataFileName, 256, "C:\\Git\\CAM625\\2022-6Data625\\Ply.2_OriginPath_202106121632.txt") ;
