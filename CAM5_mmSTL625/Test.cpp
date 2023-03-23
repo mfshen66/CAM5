@@ -11,8 +11,8 @@
 #include <iostream>
 using namespace std;
 
-#define FOR_NO_VERTEX_NORMAL "Debug only! For STL has no vertex normal!"
-//#define FOR_VERTEX_NORMAL    "Debug only! For STL has vertex normal!"
+//#define FOR_NO_VERTEX_NORMAL "Debug only! For STL has no vertex normal!"
+#define FOR_VERTEX_NORMAL    "Debug only! For STL has vertex normal!"
 
 #include "MacForTest.h"
 
@@ -45,11 +45,12 @@ void CCAMDoc::OnTest()
 	polist1 = pGM->CreateMTIPathFromPL(polyline);
 #endif // FOR_VERTEX_NORMAL
 
-		POList polist2 = polist1->GeodesicOffsetFlexibleNew(35, pGM);
+		POList polist2 = polist1->GeodesicOffsetFlexibleNew(5, pGM);
+		//polist2->PolylineExtrapolate(pGM);
 		POLYLINE_DISPLAY(polist1);
 #ifdef FOR_VERTEX_NORMAL
 		POLYLINE_DESTROY(polist1);
-#endif // FOR_NO_VERTEX_NORMAL
+#endif // FOR_VERTEX_NORMAL
 
 		POLYLINE_DISPLAY(polist2);
 		POLYLINE_DESTROY(polist2);

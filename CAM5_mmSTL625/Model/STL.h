@@ -437,7 +437,7 @@ struct GridModel {
 	double CalDistofPtAndFace(STLPNT3D p0, FList f);
 	FList FindClosetFace(STLPNT3D p0, double tol);
 	int Is_in_triangle(STLPNT3D p0, FList f, double tol);
-	STLPNT3D CalAllVertexNormalVector(STLPNT3D p1, double tol);	// add by wjq, 计算法矢
+	STLVECTOR CalAllVertexNormalVector(STLPNT3D p1, double tol);	// add by wjq, 计算法矢
 
 	//20170825 ADD DAT文件处理
 	void stlDealInputFile();
