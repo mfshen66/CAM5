@@ -289,6 +289,9 @@
     <ClInclude Include="MacForTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="STLDetection.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CAM.cpp">
@@ -626,6 +629,9 @@
     </ClCompile>
     <ClCompile Include="Model\STL.cpp">
       <Filter>源文件\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="STLDetection.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

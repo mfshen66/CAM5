@@ -4,6 +4,7 @@
 
 #define EPS06 1e-6
 #define EPS12 1e-12
+#define EPS08 1e-8
 #define STLTRI 60
 
 #define TOLLENGTH 1.e-3
