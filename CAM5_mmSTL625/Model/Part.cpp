@@ -36,7 +36,7 @@ CPart::CPart()
 
 	m_pGM = NULL ;
 
-	// jh add 2022/8/27 ÁÙÊ±
+	// jh add 2022/8/27 ä¸´æ—¶
 	// m_pGM = new GridModel();
 	// strcpy_s(m_pGM->ModelName, 100, "d:\\2022-6Data625\\cone.stl");
 	// strcpy_s(m_pGM->ModelName, 100, "d:\\2022-6Data625\\sphere.stl");
@@ -44,7 +44,7 @@ CPart::CPart()
 	// m_pGM->stlDealInputFile();
 
 
-	// nt add 2022/6/15 ÁÙÊ±
+	// nt add 2022/6/15 ä¸´æ—¶
 	m_pGM = new GridModel() ;
 	strcpy_s(m_pGM->ModelName, 100, "C:\\Git\\CAM625\\2022-6Data625\\Plies Group.1_STLMeshData.stl") ;
 	m_pGM->stlDealInputFile() ;
@@ -54,21 +54,21 @@ CPart::CPart()
 	
 	m_pGM->GetInformationFromPath() ;
 
-	// nt add 2022/7/8 ÁÙÊ± ²âÊÔºÜ¶àÇé¿ö·µ»Ø-1.µÄÎÊÌâ
+	// nt add 2022/7/8 ä¸´æ—¶ æµ‹è¯•å¾ˆå¤šæƒ…å†µè¿”å›-1.çš„é—®é¢˜
 	/*m_pGM = new GridModel() ;
-	strcpy_s(m_pGM->ModelName, 100, "d:\\2022-6Data625\\·µ»ØÌ«¶à-1\\Plies Group.1_STLMeshData.stl") ;
+	strcpy_s(m_pGM->ModelName, 100, "d:\\2022-6Data625\\è¿”å›å¤ªå¤š-1\\Plies Group.1_STLMeshData.stl") ;
 	m_pGM->stlDealInputFile() ;
-	strcpy_s(m_pGM->PreDataFileName, 256, "d:\\2022-6Data625\\·µ»ØÌ«¶à-1\\Ply.1_OriginPath_20210707091014.txt") ;
+	strcpy_s(m_pGM->PreDataFileName, 256, "d:\\2022-6Data625\\è¿”å›å¤ªå¤š-1\\Ply.1_OriginPath_20210707091014.txt") ;
 	m_pGM->GetInformationFromPath() ;*/
 
-	// nt add 2022/7/8 ÁÙÊ± ²âÊÔ±ÈÊµ¼Ê´ó10µÄÎÊÌâ
+	// nt add 2022/7/8 ä¸´æ—¶ æµ‹è¯•æ¯”å®é™…å¤§10çš„é—®é¢˜
 	/*m_pGM = new GridModel() ;
-	strcpy_s(m_pGM->ModelName, 100, "d:\\2022-6Data625\\¾àÀë±ÈÊµ¼Ê´ó10×óÓÒ\\Plies Group.1_STLMeshData.stl") ;
+	strcpy_s(m_pGM->ModelName, 100, "d:\\2022-6Data625\\è·ç¦»æ¯”å®é™…å¤§10å·¦å³\\Plies Group.1_STLMeshData.stl") ;
 	m_pGM->stlDealInputFile() ;
-	strcpy_s(m_pGM->PreDataFileName, 256, "d:\\2022-6Data625\\¾àÀë±ÈÊµ¼Ê´ó10×óÓÒ\\Ply.1_OriginPath_20210707104357.txt") ;
+	strcpy_s(m_pGM->PreDataFileName, 256, "d:\\2022-6Data625\\è·ç¦»æ¯”å®é™…å¤§10å·¦å³\\Ply.1_OriginPath_20210707104357.txt") ;
 	m_pGM->GetInformationFromPath() ;*/
 
-	// ¹ì¼£ÏßÉÏµÄ½Úµã×ª»¯ÎªCRefPt
+	// è½¨è¿¹çº¿ä¸Šçš„èŠ‚ç‚¹è½¬åŒ–ä¸ºCRefPt
 	if( m_pGM )
 	{
 		int i, j, n, m ;
@@ -77,7 +77,7 @@ CPart::CPart()
 		POList OL, *OLs ;
 		n = m_pGM->TrailNumDum ;
 
-		// Éú³É½Úµã
+		// ç”ŸæˆèŠ‚ç‚¹
 		//if( n > 0 )
 		//{
 		//	for( i = 1 ; i <= m_pGM->TrailNumDum ; i++ )
@@ -107,7 +107,7 @@ CPart::CPart()
 			m_features.Add(pRefPt);
 		}
 
-		// ¼òµ¥µÈ¾à
+		// ç®€å•ç­‰è·
 		/*if( n > 0 )
 		{
 			OLs = (POList*)malloc(sizeof(POList)*(n*2+1)) ;
@@ -133,7 +133,7 @@ CPart::CPart()
 			//free(m_pGM->POLHead) ;
 			m_pGM->POLHead = OLs ;
 		}*/
-		//if( n > 0 ) // ½öÉú³ÉÒ»ÌõµÈ¾àÏß
+		//if( n > 0 ) // ä»…ç”Ÿæˆä¸€æ¡ç­‰è·çº¿
 		//{
 		//	OLs = (POList*)malloc(sizeof(POList)*(n+2)) ;
 		//	for( i = 1 ; i <= n ; i++ )
@@ -142,7 +142,7 @@ CPart::CPart()
 		//		OLs[i] = OL ;
 		//	}
 
-		//	OL = OLs[2] ; // Õë¶ÔÕâÌõÏßµÈ¾à!!!!!!!!!!!!!!!!!
+		//	OL = OLs[2] ; // é’ˆå¯¹è¿™æ¡çº¿ç­‰è·!!!!!!!!!!!!!!!!!
 		//	OLs[n+1] = OL->DirectOffset(100.) ;
 		//	for( j = 1, m = 0 ; j <= OL->DNum ; j++ )
 		//		m += (OL->ENum[j]-OL->SNum[j]+1) ;
@@ -170,7 +170,7 @@ CPart::~CPart()
 			delete m_features[i] ;
 	}
 
-	// nt add 2022/6/15 ÁÙÊ±
+	// nt add 2022/6/15 ä¸´æ—¶
 	//if( m_pGM )...
 }
 //--------------------------------------------------------------
@@ -282,7 +282,7 @@ int CPart::AddRefPlaneOfXYZ()
 	lf.Z[1] = 0.0 ;
 	lf.Z[2] = 1.0 ;
 	pPlane = new CRefPlane(rpXY, &lf) ;
-	name = "XYÆ½Ãæ" ;
+	name = "XYå¹³é¢" ;
 	pPlane->SetName(name) ;
 	Add(pPlane) ;
 
@@ -297,7 +297,7 @@ int CPart::AddRefPlaneOfXYZ()
 	lf.Z[1] = 0.0 ;
 	lf.Z[2] = 0.0 ;
 	pPlane = new CRefPlane(rpYZ, &lf) ;
-	name = "YZÆ½Ãæ" ;
+	name = "YZå¹³é¢" ;
 	pPlane->SetName(name) ;
 	Add(pPlane) ;
 
@@ -312,7 +312,7 @@ int CPart::AddRefPlaneOfXYZ()
 	lf.Z[1] = 1.0 ;
 	lf.Z[2] = 0.0 ;
 	pPlane = new CRefPlane(rpZX, &lf) ;
-	name = "ZXÆ½Ãæ" ;
+	name = "ZXå¹³é¢" ;
 	pPlane->SetName(name) ;
 	Add(pPlane) ;
 
@@ -336,7 +336,7 @@ int	CPart::Add(CFeature* pF)
 	int k ;
 	BOX3D box ;
 
-	// ¶ÔÓÚÎ´ÃüÃûµÄCFeature, ¸³¸øÒ»¸öÈ±Ê¡µÄÃû×Ö, 2010/9/9
+	// å¯¹äºæœªå‘½åçš„CFeature, èµ‹ç»™ä¸€ä¸ªç¼ºçœçš„åå­—, 2010/9/9
 	CStr name ;
 	pF->GetName(name) ;
 	if( name == "" )
@@ -415,10 +415,10 @@ int CPart::Navigate(DNAVI* dn)
 		pF = (CFeature*)m_features[i] ;
 		if( pF )
 		{
-			if( pF->GetType() == ftRefPt ) // Ê¹ÓÃ²Î¿¼µã
+			if( pF->GetType() == ftRefPt ) // ä½¿ç”¨å‚è€ƒç‚¹
 				((CRefPt*)pF)->Navigate(dn) ;
 			else
-			if( pF->GetType() == ftRefCur ) // Ê¹ÓÃ²Î¿¼ÇúÏß
+			if( pF->GetType() == ftRefCur ) // ä½¿ç”¨å‚è€ƒæ›²çº¿
 				((CRefCur*)pF)->Navigate(dn) ;
 		}
 	}
@@ -446,10 +446,10 @@ int CPart::NavigateKeyPt(DNAVI* dn)
 		pF = (CFeature*)m_features[i] ;
 		if( pF )
 		{
-			if( pF->GetType() == ftRefPt ) // Ê¹ÓÃ²Î¿¼µã
+			if( pF->GetType() == ftRefPt ) // ä½¿ç”¨å‚è€ƒç‚¹
 				((CRefPt*)pF)->Navigate(dn) ;
 			else
-			if( pF->GetType() == ftRefCur ) // Ê¹ÓÃ²Î¿¼ÇúÏß
+			if( pF->GetType() == ftRefCur ) // ä½¿ç”¨å‚è€ƒæ›²çº¿
 				((CRefCur*)pF)->NavigateKeyPt(dn) ;
 		}
 	}
@@ -582,8 +582,8 @@ int intervalIsInPeX(INTERVAL* interval,
 }
 
 /*	2009/5/7 nt
- *	ÔÚpµã´¦¶ÔCPartÄÚµÄÇúÏß½øĞĞ²Ã¼ô
- *	´úÂëÀ´Ô´ÓÚCAD2DÖĞµÄCPartÀà
+ *	åœ¨pç‚¹å¤„å¯¹CPartå†…çš„æ›²çº¿è¿›è¡Œè£å‰ª
+ *	ä»£ç æ¥æºäºCAD2Dä¸­çš„CPartç±»
  *	nt modify 2010/10/20 see CAD2D Part->Trim()
  */
 int CPart::Trim(PNT2D p, COA& trimmed, COA& created)
@@ -601,7 +601,7 @@ int CPart::Draw(void* pVI, int drawMode)
 {
 	glEnable(GL_DEPTH_TEST);
 
-	// »æÖÆÇúÃæÀàÍ¼Ôª
+	// ç»˜åˆ¶æ›²é¢ç±»å›¾å…ƒ
 	int i, n, type, flags ;
 	CFeature* pF ;
 
@@ -628,7 +628,7 @@ int CPart::Draw(void* pVI, int drawMode)
 	viLighting(pVI, 0) ;
 
 	glDisable(GL_DEPTH_TEST);
-	// nt add 2022/6/15 ÁÙÊ±
+	// nt add 2022/6/15 ä¸´æ—¶
 	glEnable(GL_DEPTH_TEST);
 	if( m_pGM )
 	{
@@ -662,7 +662,7 @@ int CPart::Draw(void* pVI, int drawMode)
 	}
 	glDisable(GL_DEPTH_TEST) ;
 
-	// »æÖÆµãÔÆ
+	// ç»˜åˆ¶ç‚¹äº‘
 	if( m_pPCloud ) // nt add 2003/11/6
 	{
 		glEnable(GL_DEPTH_TEST) ;
@@ -728,8 +728,8 @@ int	CPart::Pick(PINFO* pi)
 }
 
 // 1:picked;2:pick none;0:error
-// ×¢Òâ£ºpLB¶¨ÒåÔÚpLFµÄXYÆ½ÃæÉÏµÄ°üÎ§ºĞ
-// nt modify 2010/10/17 : ²»¹ıÂËCRefPlane
+// æ³¨æ„ï¼špLBå®šä¹‰åœ¨pLFçš„XYå¹³é¢ä¸Šçš„åŒ…å›´ç›’
+// nt modify 2010/10/17 : ä¸è¿‡æ»¤CRefPlane
 int	CPart::PickByBox(RFRAME* pLF, 
 					 BOX2D* pLB, 
 					 double r, 
@@ -744,18 +744,18 @@ int	CPart::PickByBox(RFRAME* pLF,
 	{
 		pF = (CFeature*)m_features[i] ;
 		if( pF ) //&&
-			//pF->GetType() != ftRefPlane ) // nt add 2010/4/9 ¹ıÂË
+			//pF->GetType() != ftRefPlane ) // nt add 2010/4/9 è¿‡æ»¤
 		{
 			pF->GetBox(&box1) ; // nt add 2010/4/16
 			mathTransWorldBox(pLF, &box1, &box2) ;
-			if( pLB->min[0]-r < box2.min[0] && // ÍêÈ«°üº¬Çé¿ö
+			if( pLB->min[0]-r < box2.min[0] && // å®Œå…¨åŒ…å«æƒ…å†µ
 				box2.max[0] < pLB->max[0]+r &&
 				pLB->min[1]-r < box2.min[1] &&
 				box2.max[1] < pLB->max[1]+r )
 				fs.Add(pF) ;
 			else
 			{
-				rt_value = pF->PickByBox(pLF, pLB, r) ; // ÊµÌå±¾Éí
+				rt_value = pF->PickByBox(pLF, pLB, r) ; // å®ä½“æœ¬èº«
 				if( rt_value == 0 ) // error
 					return 0 ;
 				if( rt_value == 1 ) // picked
@@ -768,14 +768,14 @@ int	CPart::PickByBox(RFRAME* pLF,
 	{
 		m_pPCloud->GetBox(&box1) ; // nt add 2010/4/16
 		mathTransWorldBox(pLF, &box1, &box2) ;
-		if( pLB->min[0]-r < box2.min[0] && // ÍêÈ«°üº¬Çé¿ö
+		if( pLB->min[0]-r < box2.min[0] && // å®Œå…¨åŒ…å«æƒ…å†µ
 			box2.max[0] < pLB->max[0]+r &&
 			pLB->min[1]-r < box2.min[1] &&
 			box2.max[1] < pLB->max[1]+r )
 			m_pPCloud->PickedAll(fs) ;
 		else
 		{
-			rt_value = m_pPCloud->PickByBox(pLF, pLB, r, fs) ; // µã
+			rt_value = m_pPCloud->PickByBox(pLF, pLB, r, fs) ; // ç‚¹
 			if( rt_value == 0 ) // error
 				return 0 ;
 		}
@@ -1140,10 +1140,10 @@ ExceExit:
 }
 
 // 2009/4/25 nt
-// ¶ÁÈë»ù±¾Í¼Ôª
-// °üÀ¨£º
-//     (1)NURBSÇúÏß
-//     (1)NURBSÇúÃæ
+// è¯»å…¥åŸºæœ¬å›¾å…ƒ
+// åŒ…æ‹¬ï¼š
+//     (1)NURBSæ›²çº¿
+//     (1)NURBSæ›²é¢
 typedef double (*PSTR3)[3] ;
 typedef double (**PNET)[3] ;
 
