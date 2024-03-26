@@ -34,7 +34,7 @@ typedef struct GridModel GM ; // nt add 2022/6/15
 // smf add 2022/09/07
 STLVECTOR vectorNormalize(STLVECTOR& iVector);
 STLVECTOR operator- (STLPNT3D& iEnd, STLPNT3D& iBegin);
-STLVECTOR operator- (STLVECTOR& iVector); // ÏòÁ¿È¡·´
+STLVECTOR operator- (STLVECTOR& iVector); // å‘é‡å–å
 STLVECTOR operator+ (STLVECTOR& iVector1, STLVECTOR& iVector2);
 STLVECTOR operator* (double iScalar, STLVECTOR& iVector);
 double operator*(STLVECTOR& iVector1, STLVECTOR& iVector2);
@@ -83,68 +83,68 @@ struct FaceList : public CVO
 	VList SchMinVert(double p[3], double& min) ;
 	int PlaneCut(double pivot[3], double normal[3], double p[3], double dir[3], double tol, double q[3], int& i, int& j) ;
 	int IsIn(double p[3], double tol) ;
-	int IsIn2(double p[3], double tol, double prj_p[3]) ; // nt add 2022/7/9 pµÄÍ¶Ó°ÔÚFaceÄÚ£¨º¬±ß½ç£©
+	int IsIn2(double p[3], double tol, double prj_p[3]) ; // nt add 2022/7/9 pçš„æŠ•å½±åœ¨Faceå†…ï¼ˆå«è¾¹ç•Œï¼‰
 	void Prj(double p[3], double prj_p[3]) ;
 	void GetBarycenter(double center[3]) ;
 	int Draw(void* pVI, int drawMode) ;
 	int Draw2(void* pVI, int drawMode) ;
 };
 
-// Ïß¶ÎÓëÏß¶ÎÇó½»
+// çº¿æ®µä¸çº¿æ®µæ±‚äº¤
 int mathSegmIntSegm(STLPNT3D iBegin1, STLPNT3D iEnd1, STLPNT3D iBegin2, STLPNT3D iEnd2, STLPNT3D &oPoint1, STLPNT3D &oPoint2);
 
-// Ïß¶ÎÓëÆ½ÃæÇó½»
-int mathSegmentIntPln(PNT3D iPntOfSegment1, PNT3D iPntOfSegment2,  // Ïß¶ÎµÄÁ½¸ö¶Ëµã
-	PNT3D iPntOnPlane, VEC3D iNormPlane,  // Æ½ÃæµÄ·¨Ê¸¼°Æ½ÃæÉÏÒ»µã
-	double iTolLength, double iTolAngle,  // ³¤¶ÈÈİ²î¼°½Ç¶ÈÈİ²î
-	PNT3D* oPntsOfIntersection); // ½»µãÊı×éµÄÖ¸Õë
+// çº¿æ®µä¸å¹³é¢æ±‚äº¤
+int mathSegmentIntPln(PNT3D iPntOfSegment1, PNT3D iPntOfSegment2,  // çº¿æ®µçš„ä¸¤ä¸ªç«¯ç‚¹
+	PNT3D iPntOnPlane, VEC3D iNormPlane,  // å¹³é¢çš„æ³•çŸ¢åŠå¹³é¢ä¸Šä¸€ç‚¹
+	double iTolLength, double iTolAngle,  // é•¿åº¦å®¹å·®åŠè§’åº¦å®¹å·®
+	PNT3D* oPntsOfIntersection); // äº¤ç‚¹æ•°ç»„çš„æŒ‡é’ˆ
 
-// Æ½ÃæÓëÈı½ÇĞÎÇó½»
+// å¹³é¢ä¸ä¸‰è§’å½¢æ±‚äº¤
 int mathPlnIntTri(
-	PNT3D iPntOfTri1, PNT3D iPntOfTri2, PNT3D iPntOfTri3, // Èı½ÇĞÎµÄÈı¸ö¶¥µã
-	PNT3D iPntOnPlane, VEC3D iNormPlane,  // Æ½ÃæµÄ·¨Ê¸¼°Æ½ÃæÉÏÒ»µã
-	double iTolLength, double iTolAngle,  // ³¤¶ÈÈİ²î¼°½Ç¶ÈÈİ²î
-	PNT3D* oPntsOfIntersection, // ½»µãÊı×éµÄÖ¸Õë
-	int* oIndexOfIntEdge, int& oNumOfIntEdge); // ÓëÆ½ÃæÏà½»µÄ±ßµÄĞòºÅ¼°ÊıÁ¿
-
-int mathPlnIntTri(
-	STLPNT3D iPntOfTri1, STLPNT3D iPntOfTri2, STLPNT3D iPntOfTri3, // Èı½ÇĞÎµÄÈı¸ö¶¥µã
-	STLPNT3D iPntOnPlane, STLVECTOR iNormPlane,  // Æ½ÃæµÄ·¨Ê¸¼°Æ½ÃæÉÏÒ»µã
-	double iTolLength, double iTolAngle,  // ³¤¶ÈÈİ²î¼°½Ç¶ÈÈİ²î
-	STLPNT3D* oPntsOfIntersection,  // ½»µãÊı×éµÄÖ¸Õë
-	int* oIndexOfIntEdge, int& oNumOfIntEdge); // ÓëÆ½ÃæÏà½»µÄ±ßµÄĞòºÅ¼°ÊıÁ¿
+	PNT3D iPntOfTri1, PNT3D iPntOfTri2, PNT3D iPntOfTri3, // ä¸‰è§’å½¢çš„ä¸‰ä¸ªé¡¶ç‚¹
+	PNT3D iPntOnPlane, VEC3D iNormPlane,  // å¹³é¢çš„æ³•çŸ¢åŠå¹³é¢ä¸Šä¸€ç‚¹
+	double iTolLength, double iTolAngle,  // é•¿åº¦å®¹å·®åŠè§’åº¦å®¹å·®
+	PNT3D* oPntsOfIntersection, // äº¤ç‚¹æ•°ç»„çš„æŒ‡é’ˆ
+	int* oIndexOfIntEdge, int& oNumOfIntEdge); // ä¸å¹³é¢ç›¸äº¤çš„è¾¹çš„åºå·åŠæ•°é‡
 
 int mathPlnIntTri(
-	FList iTriangle, // Èı½ÇĞÎ
-	STLPNT3D iPntOnPlane, STLVECTOR iNormPlane,  // Æ½ÃæµÄ·¨Ê¸¼°Æ½ÃæÉÏÒ»µã
-	double iTolLength, double iTolAngle,  // ³¤¶ÈÈİ²î¼°½Ç¶ÈÈİ²î
-	STLPNT3D* oPntsOfIntersection,  // ½»µãÊı×éµÄÖ¸Õë
-	int* oIndexOfIntEdge, int& oNumOfIntEdge); // ÓëÆ½ÃæÏà½»µÄ±ßµÄĞòºÅ¼°ÊıÁ¿
+	STLPNT3D iPntOfTri1, STLPNT3D iPntOfTri2, STLPNT3D iPntOfTri3, // ä¸‰è§’å½¢çš„ä¸‰ä¸ªé¡¶ç‚¹
+	STLPNT3D iPntOnPlane, STLVECTOR iNormPlane,  // å¹³é¢çš„æ³•çŸ¢åŠå¹³é¢ä¸Šä¸€ç‚¹
+	double iTolLength, double iTolAngle,  // é•¿åº¦å®¹å·®åŠè§’åº¦å®¹å·®
+	STLPNT3D* oPntsOfIntersection,  // äº¤ç‚¹æ•°ç»„çš„æŒ‡é’ˆ
+	int* oIndexOfIntEdge, int& oNumOfIntEdge); // ä¸å¹³é¢ç›¸äº¤çš„è¾¹çš„åºå·åŠæ•°é‡
 
-// Á½µã¼äµÄÆ½·½¾àÀë
+int mathPlnIntTri(
+	FList iTriangle, // ä¸‰è§’å½¢
+	STLPNT3D iPntOnPlane, STLVECTOR iNormPlane,  // å¹³é¢çš„æ³•çŸ¢åŠå¹³é¢ä¸Šä¸€ç‚¹
+	double iTolLength, double iTolAngle,  // é•¿åº¦å®¹å·®åŠè§’åº¦å®¹å·®
+	STLPNT3D* oPntsOfIntersection,  // äº¤ç‚¹æ•°ç»„çš„æŒ‡é’ˆ
+	int* oIndexOfIntEdge, int& oNumOfIntEdge); // ä¸å¹³é¢ç›¸äº¤çš„è¾¹çš„åºå·åŠæ•°é‡
+
+// ä¸¤ç‚¹é—´çš„å¹³æ–¹è·ç¦»
 double mathSquareDist(PNT3D p1, PNT3D p2);
 double mathSquareDist(STLPNT3D p1, STLPNT3D p2);
 
 // 2022/12/01 smf add 
-// Ö¸´úÏß¶ÎµÄ¶Ëµã
+// æŒ‡ä»£çº¿æ®µçš„ç«¯ç‚¹
 enum SEGMENT
 {
 	Begin = 0,
 	End = +1
 };
 // 2022/12/01 smf add 
-// Ëõ¶Ì»òÑÓÉìÒ»ÌõÏß¶Î¡£iDist¿ÉÎª¸ºÖµ£¬iDist < 0 Ëõ¶Ì£»iDist > 0 ÑÓÉì¡£
-// iBeginOrEnd: 0-Æğµã£»1-ÖÕµã¡£
-// ·µ»ØÖµ£º0-Ïß¶Î¹ı¶Ì£¬²»¿ÉËõ¶Ì£»1-³É¹¦¡£
+// ç¼©çŸ­æˆ–å»¶ä¼¸ä¸€æ¡çº¿æ®µã€‚iDistå¯ä¸ºè´Ÿå€¼ï¼ŒiDist < 0 ç¼©çŸ­ï¼›iDist > 0 å»¶ä¼¸ã€‚
+// iBeginOrEnd: 0-èµ·ç‚¹ï¼›1-ç»ˆç‚¹ã€‚
+// è¿”å›å€¼ï¼š0-çº¿æ®µè¿‡çŸ­ï¼Œä¸å¯ç¼©çŸ­ï¼›1-æˆåŠŸã€‚
 int mathShortenOrLengthenSegmByDist(STLPNT3D &ioBegin, STLPNT3D &ioEnd, int iBeginOrEnd, double iDist);
 
 BOOL mathIsCoincidentPoint(STLPNT3D iPoint1, STLPNT3D iPoint2);
-// Á½µã¼äµÄ¾àÀë
+// ä¸¤ç‚¹é—´çš„è·ç¦»
 double mathDist(STLPNT3D p1, STLPNT3D p2);
 
-// µãÍ¶Ó°µ½Èı½ÇĞÎ
+// ç‚¹æŠ•å½±åˆ°ä¸‰è§’å½¢
 void mathPrjPntPln(STLPNT3D iPoint, STLPNT3D iPointOfPlane, STLVECTOR iNormalOfPlane, STLPNT3D& oProjectPoint);
-// ÏòÁ¿Í¶Ó°µ½Èı½ÇĞÎ
+// å‘é‡æŠ•å½±åˆ°ä¸‰è§’å½¢
 void mathPrjVecPln(STLVECTOR iVector, STLVECTOR iNormal, STLVECTOR &oPrjVec);
 
 void mathTransWorldVec3DByXYZ(VEC3D e1,
@@ -183,68 +183,68 @@ int mathIntSegmCyl(PNT3D begin,
 	double* pt2);
 
 // smf add 2023/02/24
-// ¹²ÃæÏß¶ÎµÄ½»µã¼ÆËã
+// å…±é¢çº¿æ®µçš„äº¤ç‚¹è®¡ç®—
 int mathSegmIntSegmInFace(STLPNT3D iBegin1, STLPNT3D iEnd1, STLPNT3D iBegin2, STLPNT3D iEnd2, double iTol, STLPNT3D& oIntPoint);
 
 bool mathIsPointInSegm(STLPNT3D iPoint, STLPNT3D iBegin, STLPNT3D iEnd, double iTol);
 
-STLPNT3D mathMidPoint(STLPNT3D iPoint1, STLPNT3D iPoint2); // ÖĞµã
+STLPNT3D mathMidPoint(STLPNT3D iPoint1, STLPNT3D iPoint2); // ä¸­ç‚¹
 
 #define ERROR_SELF_INT  \
 {	\
 char s_i[10];			\
 sprintf_s(s_i, "%d.", i);	\
-char msg[30] = "µÈ¾àÏß×ÔÏà½»! i = ";	\
+char msg[30] = "ç­‰è·çº¿è‡ªç›¸äº¤! i = ";	\
 strcat_s(msg, s_i);	\
 CString str_msg(msg);	\
-MessageBox(NULL, (LPCWSTR)str_msg, (LPCWSTR)L"¾¯¸æ", MB_OK);	\
+MessageBox(NULL, (LPCWSTR)str_msg, (LPCWSTR)L"è­¦å‘Š", MB_OK);	\
 }
 
 #define ERROR_CHORDAL_HEIGHT  \
 {	\
 char s_i[10];			\
 sprintf_s(s_i, "%d.", i);	\
-char msg[30] = "ÓëÇúÃæ¾àÀë³¬¹ıãĞÖµ! i = ";	\
+char msg[30] = "ä¸æ›²é¢è·ç¦»è¶…è¿‡é˜ˆå€¼! i = ";	\
 strcat_s(msg, s_i);	\
 CString str_msg(msg);	\
-MessageBox(NULL, (LPCWSTR)str_msg, (LPCWSTR)L"¾¯¸æ", MB_OK);	\
+MessageBox(NULL, (LPCWSTR)str_msg, (LPCWSTR)L"è­¦å‘Š", MB_OK);	\
 }
 
 // smf add 2022/11/01
-// ÅĞ¶ÏÔ²ÖùÃæÉÏµÄµãÊÇ·ñÔÚÑÓ³¤¶ÎÉÏ:
-// iCylBegin, iCylEnd: Ô²ÖùÖáÏßÆğÖ¹µã
-// iRadius: Ô²Öù°ë¾¶
+// åˆ¤æ–­åœ†æŸ±é¢ä¸Šçš„ç‚¹æ˜¯å¦åœ¨å»¶é•¿æ®µä¸Š:
+// iCylBegin, iCylEnd: åœ†æŸ±è½´çº¿èµ·æ­¢ç‚¹
+// iRadius: åœ†æŸ±åŠå¾„
 BOOLEAN mathIsPointOnCylinderExtension(PNT3D iPoint, PNT3D iCylBegin, PNT3D iCylEnd, double iRadius);
 
 // smf add 2022/11/01
-// Ïß¶ÎÓëÔ²Öù¶ÎÇó½»: 
-// iSegmBegin, iSegmEnd: Ïß¶ÎµÄÁ½¸ö¶Ëµã
-// iCylBegin, iCylEnd: Ô²ÖùÖáÏßÆğÖ¹µã
-// iRadius: Ô²Öù°ë¾¶
-// oNumIntPnts: ½»µã¸öÊı
-// oIntPnts: ½»µãÊı×é
+// çº¿æ®µä¸åœ†æŸ±æ®µæ±‚äº¤: 
+// iSegmBegin, iSegmEnd: çº¿æ®µçš„ä¸¤ä¸ªç«¯ç‚¹
+// iCylBegin, iCylEnd: åœ†æŸ±è½´çº¿èµ·æ­¢ç‚¹
+// iRadius: åœ†æŸ±åŠå¾„
+// oNumIntPnts: äº¤ç‚¹ä¸ªæ•°
+// oIntPnts: äº¤ç‚¹æ•°ç»„
 BOOLEAN mathIntSegmCyl(
-	STLVECTOR iSegmBegin, STLVECTOR iSegmEnd,	//Ïß¶ÎµÄÁ½¸ö¶Ëµã
-	STLVECTOR iCylBegin, STLVECTOR iCylEnd,		// Ô²ÖùÖáÏßµÄÆğÖ¹µã
-	double iRadius,								// Ô²Öù°ë¾¶
-	double iTol,								// Èİ²î 
-	int &oNumIntPnts,							// ½»µã¸öÊı
-	STLVECTOR *oIntPnts);						// ½»µãÊı×é
+	STLVECTOR iSegmBegin, STLVECTOR iSegmEnd,	//çº¿æ®µçš„ä¸¤ä¸ªç«¯ç‚¹
+	STLVECTOR iCylBegin, STLVECTOR iCylEnd,		// åœ†æŸ±è½´çº¿çš„èµ·æ­¢ç‚¹
+	double iRadius,								// åœ†æŸ±åŠå¾„
+	double iTol,								// å®¹å·® 
+	int &oNumIntPnts,							// äº¤ç‚¹ä¸ªæ•°
+	STLVECTOR *oIntPnts);						// äº¤ç‚¹æ•°ç»„
 
 // smf add 2022/12/10
-// ¸ù¾İÈı½ÇĞÎ¶¥µãµÄĞÅÏ¢£¬ÕÒµ½Èı½ÇĞÎ±ßÉÏÖµµÈÓÚ¸ø¶¨ÖµµÄÒ»µã
-// ioIndex-µÈÖµ¶¥µãµÄË÷Òı
-// Ó¦¸ÃÖ»·µ»Ø0£¬1»ò2£º
-// 0-Èı½ÇĞÎÄÚ²¿Ã»ÓĞµÈÖµµã£»
-// 1-Èı½ÇĞÎµÄÒ»¸ö¶¥µãÎªµÈÖµµã£¬Ğè±éÀú¸Ã¶¥µãÖÜÎ§µÄËùÓĞÈı½ÇĞÎ
-// 2-Èı½ÇĞÎ±ßÉÏÓĞÁ½¸öµÈÖµµã
+// æ ¹æ®ä¸‰è§’å½¢é¡¶ç‚¹çš„ä¿¡æ¯ï¼Œæ‰¾åˆ°ä¸‰è§’å½¢è¾¹ä¸Šå€¼ç­‰äºç»™å®šå€¼çš„ä¸€ç‚¹
+// ioIndex-ç­‰å€¼é¡¶ç‚¹çš„ç´¢å¼•
+// åº”è¯¥åªè¿”å›0ï¼Œ1æˆ–2ï¼š
+// 0-ä¸‰è§’å½¢å†…éƒ¨æ²¡æœ‰ç­‰å€¼ç‚¹ï¼›
+// 1-ä¸‰è§’å½¢çš„ä¸€ä¸ªé¡¶ç‚¹ä¸ºç­‰å€¼ç‚¹ï¼Œéœ€éå†è¯¥é¡¶ç‚¹å‘¨å›´çš„æ‰€æœ‰ä¸‰è§’å½¢
+// 2-ä¸‰è§’å½¢è¾¹ä¸Šæœ‰ä¸¤ä¸ªç­‰å€¼ç‚¹
 int mathCalPointsByTriangleVertexInfo(
 	STLPNT3D iVertex1, STLPNT3D iVertex2, STLPNT3D iVertex3, 
-	double iInfo[3], // Èı½ÇĞÎ¶¥µã´¦µÄĞÅÏ¢£¨Öµ£©
-	double iRef, // ¸ø¶¨µÄ²Î¿¼Öµ
-	double iTol, // Èİ²î
-	STLPNT3D ioPoint[3], // µÈÖµµã
-	int* ioIndex); // µÈÖµ¶¥µãµÄË÷Òı
+	double iInfo[3], // ä¸‰è§’å½¢é¡¶ç‚¹å¤„çš„ä¿¡æ¯ï¼ˆå€¼ï¼‰
+	double iRef, // ç»™å®šçš„å‚è€ƒå€¼
+	double iTol, // å®¹å·®
+	STLPNT3D ioPoint[3], // ç­‰å€¼ç‚¹
+	int* ioIndex); // ç­‰å€¼é¡¶ç‚¹çš„ç´¢å¼•
 
 BOOL mathIsVectorDuringTwoVectors(STLVECTOR iVector1, STLVECTOR iVector2, STLVECTOR iVector);
 
@@ -253,14 +253,14 @@ const double delta_l = 50.;
 
 using namespace std;
 
-struct MTIPathOriginList{//ÅÅĞòÇ°Â·¾¶¿É·Ö¶Î,ÅÅĞòºóÂ·¾¶²»¿É·Ö¶Î
-	int TNum;					//ÌõÊı±ê¼Ç
-	int DNum;					//¶ÎÊı±ê¼Ç
-	STLPNT3D *PTrail;			//¹Ø¼üµã			POLYLINE
-	STLPNT3D *PNTrail;			//¹Ø¼üµã·¨Ïò
-	FList *FTrail;				//Ïà¹ØÈı½ÇÆ¬
-	int *SNum;					//¹Ø¼üµãÊıÄ¿Æğ
-	int *ENum;					//¹Ø¼üµãÊıÄ¿Ä©
+struct MTIPathOriginList{//æ’åºå‰è·¯å¾„å¯åˆ†æ®µ,æ’åºåè·¯å¾„ä¸å¯åˆ†æ®µ
+	int TNum;					//æ¡æ•°æ ‡è®°
+	int DNum;					//æ®µæ•°æ ‡è®°
+	STLPNT3D *PTrail;			//å…³é”®ç‚¹			POLYLINE
+	STLPNT3D *PNTrail;			//å…³é”®ç‚¹æ³•å‘
+	FList *FTrail;				//ç›¸å…³ä¸‰è§’ç‰‡
+	int *SNum;					//å…³é”®ç‚¹æ•°ç›®èµ·
+	int *ENum;					//å…³é”®ç‚¹æ•°ç›®æœ«
 	POList PONext;
 
 	void Initialize();
@@ -269,24 +269,24 @@ struct MTIPathOriginList{//ÅÅĞòÇ°Â·¾¶¿É·Ö¶Î,ÅÅĞòºóÂ·¾¶²»¿É·Ö¶Î
 	POList DirectOffset(double d) ; // nt add 2022/7/10
 
 	// smf add 2022/7/27
-	// ·ÇÈáĞÔ¹ö×Ó¹¤×÷Ê±µÄ²âµØµÈ¾à(²»·Ö¶Î)
+	// éæŸ”æ€§æ»šå­å·¥ä½œæ—¶çš„æµ‹åœ°ç­‰è·(ä¸åˆ†æ®µ)
 	POList GeodesicOffsetNonFlexible(
-		double iDistance, // iDistance¿ÉÎª¸ºÖµ£¬·ûºÅ´ú±íµÈ¾à·½Ïò
-		GridModel* iModel,	// ÊäÈë¹ì¼£ËùÒÀ¸½Ä£ĞÍ, ÓÃÒÔ»ñÈ¡·¨Ê¸
-		double* oChordalHeight, // Ã¿Ò»µã´¦µÄ¹­¸ß
-		int iMaxChordalHeight); // ¹­¸ß×î´óÖµ
+		double iDistance, // iDistanceå¯ä¸ºè´Ÿå€¼ï¼Œç¬¦å·ä»£è¡¨ç­‰è·æ–¹å‘
+		GridModel* iModel,	// è¾“å…¥è½¨è¿¹æ‰€ä¾é™„æ¨¡å‹, ç”¨ä»¥è·å–æ³•çŸ¢
+		double* oChordalHeight, // æ¯ä¸€ç‚¹å¤„çš„å¼“é«˜
+		int iMaxChordalHeight); // å¼“é«˜æœ€å¤§å€¼
 
 	// smf add 2022/9/25
-	// ÈáĞÔ¹ö×Ó¹¤×÷Ê±µÄ²âµØµÈ¾à(²»·Ö¶Î)
+	// æŸ”æ€§æ»šå­å·¥ä½œæ—¶çš„æµ‹åœ°ç­‰è·(ä¸åˆ†æ®µ)
 	POList GeodesicOffsetFlexible(
-		double iDistance, // iDistance¿ÉÎª¸ºÖµ£¬·ûºÅ´ú±íµÈ¾à·½Ïò
-		GridModel* iModel	// ÊäÈë¹ì¼£ËùÒÀ¸½Ä£ĞÍ, ÓÃÒÔ»ñÈ¡·¨Ê¸
-		/*double* oChordalHeight,*/  // Ã¿Ò»µã´¦µÄ¹­¸ß
-		/*int iMaxChordalHeight*/);  // ¹­¸ß×î´óÖµ
+		double iDistance, // iDistanceå¯ä¸ºè´Ÿå€¼ï¼Œç¬¦å·ä»£è¡¨ç­‰è·æ–¹å‘
+		GridModel* iModel	// è¾“å…¥è½¨è¿¹æ‰€ä¾é™„æ¨¡å‹, ç”¨ä»¥è·å–æ³•çŸ¢
+		/*double* oChordalHeight,*/  // æ¯ä¸€ç‚¹å¤„çš„å¼“é«˜
+		/*int iMaxChordalHeight*/);  // å¼“é«˜æœ€å¤§å€¼
 
 	POList GeodesicOffsetFlexibleNew(
-		double iDistance, // iDistance¿ÉÎª¸ºÖµ£¬·ûºÅ´ú±íµÈ¾à·½Ïò
-		GridModel* iModel);	// ÊäÈë¹ì¼£ËùÒÀ¸½Ä£ĞÍ, ÓÃÒÔ»ñÈ¡·¨Ê¸
+		double iDistance, // iDistanceå¯ä¸ºè´Ÿå€¼ï¼Œç¬¦å·ä»£è¡¨ç­‰è·æ–¹å‘
+		GridModel* iModel);	// è¾“å…¥è½¨è¿¹æ‰€ä¾é™„æ¨¡å‹, ç”¨ä»¥è·å–æ³•çŸ¢
 
 	POList GeodesicOffsetPreprocessing(/*STLVECTOR iOffsetDir, */GridModel* iModel);
 
@@ -301,22 +301,22 @@ struct MTIPathOriginList{//ÅÅĞòÇ°Â·¾¶¿É·Ö¶Î,ÅÅĞòºóÂ·¾¶²»¿É·Ö¶Î
 	static BOOL IsPointInTriangle(STLPNT3D iPoint, FList iTri);
 	static bool IsSegmInTriangle(STLPNT3D iBegin, STLPNT3D iEnd, FList iTri);
 
-	// ¼ì²éÊÇ·ñÓĞ×Ô½»
+	// æ£€æŸ¥æ˜¯å¦æœ‰è‡ªäº¤
 	void PolylineCheck();
 	BOOL DeleteOnePTrail(int iIndex);
 
-	// Ê×Ä©¶ËÑÓÉì
+	// é¦–æœ«ç«¯å»¶ä¼¸
 	void PolylineExtrapolate(GridModel *iModel);
-	void Extrapolate(STLPNT3D iPoint, STLVECTOR iDirection, FList iSupport, STLPNT3D &oPoint, FList &oFNext); // iDirectionÓ¦Îªµ¥Î»ÏòÁ¿
+	void Extrapolate(STLPNT3D iPoint, STLVECTOR iDirection, FList iSupport, STLPNT3D &oPoint, FList &oFNext); // iDirectionåº”ä¸ºå•ä½å‘é‡
 
 	// smf add 2022/11/03
-	int AddOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail, int iIndex); // µÈ¾àÏßÌí¼ÓÒ»¸ö¹Ø¼üµã
+	int AddOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail, int iIndex); // ç­‰è·çº¿æ·»åŠ ä¸€ä¸ªå…³é”®ç‚¹
 	void AddFirstPTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail);
-	void PushOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail); // µÈ¾àÏß×îºóÌí¼ÓÒ»¸ö¹Ø¼üµã
-	void CalOffsetDir(int iIndex, int iDir, int iNum, STLVECTOR &oOffsetDir, STLVECTOR &oTanDir); // ¼ÆËãµÈ¾à·½Ïò
+	void PushOnePTrail(STLPNT3D &iPTrail, STLVECTOR &iPNTrail, FList iFTrail); // ç­‰è·çº¿æœ€åæ·»åŠ ä¸€ä¸ªå…³é”®ç‚¹
+	void CalOffsetDir(int iIndex, int iDir, int iNum, STLVECTOR &oOffsetDir, STLVECTOR &oTanDir); // è®¡ç®—ç­‰è·æ–¹å‘
 	void GetRelatedFaceOfPTrail(int iIndex, FRelated oRelatedF, int &oRFNum);
 
-	// µãµ½¶à¶ÎÏßµÄ²âµØ¾àÀë
+	// ç‚¹åˆ°å¤šæ®µçº¿çš„æµ‹åœ°è·ç¦»
 	double CalGeodesicDistancePointToPl(GridModel *iModel, FList iFace, STLPNT3D iPoint, int iDir);
 	void Destroy();
 
@@ -361,36 +361,36 @@ struct Pp
 {
 	FList fs[2] ;
 	double ps[2][3] ;
-	int I ; // Î»ÖÃË÷Òı, I<1±íÊ¾Õâ¸öpoint pairÊÇÎŞĞ§µÄ£¬²»ÄÜÓÃ
+	int I ; // ä½ç½®ç´¢å¼•, I<1è¡¨ç¤ºè¿™ä¸ªpoint pairæ˜¯æ— æ•ˆçš„ï¼Œä¸èƒ½ç”¨
 	double t ; // [0., 1.)
 	double d ; // geodesic distance
-	int perp ; // nt add 2022/7/4 1=´¹Ö±, 0=²»´¹Ö±
+	int perp ; // nt add 2022/7/4 1=å‚ç›´, 0=ä¸å‚ç›´
 } ;
 
-typedef struct Gdinfo GDINFO ; // ²âµØ¾àÀëĞÅÏ¢
+typedef struct Gdinfo GDINFO ; // æµ‹åœ°è·ç¦»ä¿¡æ¯
 struct Gdinfo
 {
-	int ns[2] ; // ns[0]Îªpolyline1½Úµã¸öÊı£¬ns[1]Îªpolyline2½Úµã¸öÊı
-	// pps[0][0],pps[1][0]Î´ÓÃ
-	PP* pps[2] ; // pps[0]µÄÔªËØÊµ¼Ê¸öÊıÎªns[0]+1, pps[1]µÄÔªËØÊµ¼Ê¸öÊıÎªns[1]+1
+	int ns[2] ; // ns[0]ä¸ºpolyline1èŠ‚ç‚¹ä¸ªæ•°ï¼Œns[1]ä¸ºpolyline2èŠ‚ç‚¹ä¸ªæ•°
+	// pps[0][0],pps[1][0]æœªç”¨
+	PP* pps[2] ; // pps[0]çš„å…ƒç´ å®é™…ä¸ªæ•°ä¸ºns[0]+1, pps[1]çš„å…ƒç´ å®é™…ä¸ªæ•°ä¸ºns[1]+1
 	double min ;
 	double max ;
-	int i ; // i>0, ×îĞ¡¾àÀëµã¶ÔÎªpps[0][i], ·ñÔòÎªpps[1][|i|]
-	int I ; // I>0, ×î´ó¾àÀëµã¶ÔÎªpps[0][I], ·ñÔòÎªpps[1][|I|]
+	int i ; // i>0, æœ€å°è·ç¦»ç‚¹å¯¹ä¸ºpps[0][i], å¦åˆ™ä¸ºpps[1][|i|]
+	int I ; // I>0, æœ€å¤§è·ç¦»ç‚¹å¯¹ä¸ºpps[0][I], å¦åˆ™ä¸ºpps[1][|I|]
 
 	Gdinfo() ;
 	~Gdinfo() ;
 } ;
 
 struct GridModel {
-	VList   VRoot;		// µã¶ş²æÊ÷¸ù½Úµã
-	EList   EHead;		// ±ßÁ´±íÁ´Í·
-	FList   FHead;		// ÃæÁ´±íÁ´Í·
-	int  VerNum;		// µãÊı
-	int  EdgeNum;		// ±ßÊı
-	int  FaceNum;		// ÃæÊı
-	POList	*POLHead;	// ÅÅĞòºó½Ø¶ÏÇ°Â·¾¶//²»¿É·Ö¶Î
-	double stl_xmin ;	// °üÎ§ºĞ·¶Î§, ÓÉ¶ÁÈëµã¸üĞÂ
+	VList   VRoot;		// ç‚¹äºŒå‰æ ‘æ ¹èŠ‚ç‚¹
+	EList   EHead;		// è¾¹é“¾è¡¨é“¾å¤´
+	FList   FHead;		// é¢é“¾è¡¨é“¾å¤´
+	int  VerNum;		// ç‚¹æ•°
+	int  EdgeNum;		// è¾¹æ•°
+	int  FaceNum;		// é¢æ•°
+	POList	*POLHead;	// æ’åºåæˆªæ–­å‰è·¯å¾„//ä¸å¯åˆ†æ®µ
+	double stl_xmin ;	// åŒ…å›´ç›’èŒƒå›´, ç”±è¯»å…¥ç‚¹æ›´æ–°
 	double stl_ymin ;
 	double stl_zmin ;
 	double stl_xmax ;
@@ -401,7 +401,7 @@ struct GridModel {
 	char MeshResult[10][256] ;
 	char PointName[100], ModelName[100];
 	STLPNT3D PBreak;
-	char PreDataFileName[256]; //Ôİ¿Õ,´æÒÑÓĞµÄPath/Geometry/Trajectory
+	char PreDataFileName[256]; //æš‚ç©º,å­˜å·²æœ‰çš„Path/Geometry/Trajectory
 	double isag,istep,iangle,Plyangle,dval,gapValue;
 	int TrailNumDum,FiberNum;
 	int stlFaceTag;
@@ -410,7 +410,7 @@ struct GridModel {
 	BOOL stlCreateSTLTriangle(STLPNT3D p1, STLPNT3D p2, STLPNT3D p3);
 	BOOL stlVectorNormal(STLVECTOR *v1);
 
-	// ÍØÆË¹ØÏµ½¨Á¢
+	// æ‹“æ‰‘å…³ç³»å»ºç«‹
 	FList stlCreateFace(STLVECTOR *nv, STLPNT3D *p1, STLPNT3D *p2, STLPNT3D *p3,int tNum);
 	FList stlCreateFace(STLVECTOR *nv, STLPNT3D *p1, STLPNT3D *p2, STLPNT3D *p3, STLVECTOR *v1, STLVECTOR *v2, STLVECTOR *v3, int tNum);
 	FList stlFaceAlloc();
@@ -425,22 +425,22 @@ struct GridModel {
 	void stlAddFace2Edge(FList f, EList e);
 
 	// 2016.09Add
-	BOOL stlCompareTwo3DPoint(STLPNT3D p3d1, STLPNT3D p3d2, double epsdis);	// Á½µãÏàËÆ¶È±È½Ï
-	int stlCompareTriangleVertex(STLPNT3D p1, STLPNT3D p2, STLPNT3D p3, STLPNT3D q1, STLPNT3D q2, STLPNT3D q3); // Èı½ÇÆ¬¼ì²â, ·µ»ØÖØºÏµãÊı
+	BOOL stlCompareTwo3DPoint(STLPNT3D p3d1, STLPNT3D p3d2, double epsdis);	// ä¸¤ç‚¹ç›¸ä¼¼åº¦æ¯”è¾ƒ
+	int stlCompareTriangleVertex(STLPNT3D p1, STLPNT3D p2, STLPNT3D p3, STLPNT3D q1, STLPNT3D q2, STLPNT3D q3); // ä¸‰è§’ç‰‡æ£€æµ‹, è¿”å›é‡åˆç‚¹æ•°
 
-	STLPNT3D stlTwoVectorPlus(STLPNT3D p1,STLPNT3D p2);		// Á½ÏòÁ¿ÇóºÍ p1+p2
-	STLPNT3D stlTwoVectorMinus(STLPNT3D p1,STLPNT3D p2);	// Á½ÏòÁ¿Çó²î p1-p2
-	STLPNT3D stlTwoVectorMultiply(STLPNT3D p1,double l1);	// ÏòÁ¿ÑÓ³¤ p1*l1
-	STLPNT3D stlTwoVectorDivide(STLPNT3D p1,double l1);		// ÏòÁ¿Ëõ¶Ì p1/l1
+	STLPNT3D stlTwoVectorPlus(STLPNT3D p1,STLPNT3D p2);		// ä¸¤å‘é‡æ±‚å’Œ p1+p2
+	STLPNT3D stlTwoVectorMinus(STLPNT3D p1,STLPNT3D p2);	// ä¸¤å‘é‡æ±‚å·® p1-p2
+	STLPNT3D stlTwoVectorMultiply(STLPNT3D p1,double l1);	// å‘é‡å»¶é•¿ p1*l1
+	STLPNT3D stlTwoVectorDivide(STLPNT3D p1,double l1);		// å‘é‡ç¼©çŸ­ p1/l1
 	
-	// add by wjq, ¼ÆËãÈÎÒâµãµÄ·¨Ê¸
+	// add by wjq, è®¡ç®—ä»»æ„ç‚¹çš„æ³•çŸ¢
 	double triCalArea(STLPNT3D p1, STLPNT3D p2, STLPNT3D p3);
 	double CalDistofPtAndFace(STLPNT3D p0, FList f);
 	FList FindClosetFace(STLPNT3D p0, double tol);
 	int Is_in_triangle(STLPNT3D p0, FList f, double tol);
-	STLVECTOR CalAllVertexNormalVector(STLPNT3D p1, double tol);	// add by wjq, ¼ÆËã·¨Ê¸
+	STLVECTOR CalAllVertexNormalVector(STLPNT3D p1, double tol);	// add by wjq, è®¡ç®—æ³•çŸ¢
 
-	//20170825 ADD DATÎÄ¼ş´¦Àí
+	//20170825 ADD DATæ–‡ä»¶å¤„ç†
 	void stlDealInputFile();
 	void stlReadFile(char *file);
 	void stlReadSTLBinFile(char *file);
@@ -448,55 +448,55 @@ struct GridModel {
 	void stlRead4Bytes(FILE *stlfile, char *c);
 	void stlReadDatFile(char *file);
 	
-	void    GetInformationFromPath();	// ´ÓÆÌ·ÅÂ·¾¶»ñÈ¡ĞÅÏ¢, Ö÷ÒªÕë¶ÔTXTÎÄ¼ş
-	POList	stlPOLHeadAlloc();			// ½Ø¶ÏÇ°Â·¾¶
-    FList stlGetFacetFromNum(int N);	// »ñÈ¡±àºÅÎª N µÄÃæÆ¬
+	void    GetInformationFromPath();	// ä»é“ºæ”¾è·¯å¾„è·å–ä¿¡æ¯, ä¸»è¦é’ˆå¯¹TXTæ–‡ä»¶
+	POList	stlPOLHeadAlloc();			// æˆªæ–­å‰è·¯å¾„
+    FList stlGetFacetFromNum(int N);	// è·å–ç¼–å·ä¸º N çš„é¢ç‰‡
 	//void GetNormaVectorOnVertex(VList p) ;
-	double stlDistanceTwoPoints(STLPNT3D p1, STLPNT3D p2) ;	// ¼ÆËãÁ½µã¼ä³¤
-	double  stlDistanceOneVector(STLPNT3D p1) ;				// ¼ÆËãÏòÁ¿³¤
+	double stlDistanceTwoPoints(STLPNT3D p1, STLPNT3D p2) ;	// è®¡ç®—ä¸¤ç‚¹é—´é•¿
+	double  stlDistanceOneVector(STLPNT3D p1) ;				// è®¡ç®—å‘é‡é•¿
 	
-	STLPNT3D stlDistanceVectorTwoPoint(STLPNT3D p1, STLPNT3D p2);	// ·µ»ØÁ½µã²îÏòÁ¿(µ¥Î»»¯), Èç¹ûÁ½µã¹ı½ü, Ôò·µ»Ø (0.0,0.0,0.0)
-	STLPNT3D stlTwoVectorProduct(STLPNT3D v1, STLPNT3D v2);			// ·µ»ØÁ½µã²æ³Ë
-	STLPNT3D stlOPPNormalVector(STLPNT3D v) ;						// ·µ»Øµã v Ëù¶ÔÓ¦µÄÏà·´Ê¸Á¿
-	STLPNT3D CreateMTIPoint();										// ´´½¨Ä¬ÈÏµã (0.0,0.0,0.0)
-	STLPNT3D CreateMTIPoint(double ix,double iy,double iz);			// ´Ó xyz ´´µã
-	STLPNT3D CreateMTIPoint(double p1[]);							// ´ÓÊı×é´´µã
-	STLPNT3D CreateMTIPoint(double p1[],int iNbStart);				// ´ÓÊı×éµÄÄ³Î»ÖÃ´´½¨µã
+	STLPNT3D stlDistanceVectorTwoPoint(STLPNT3D p1, STLPNT3D p2);	// è¿”å›ä¸¤ç‚¹å·®å‘é‡(å•ä½åŒ–), å¦‚æœä¸¤ç‚¹è¿‡è¿‘, åˆ™è¿”å› (0.0,0.0,0.0)
+	STLPNT3D stlTwoVectorProduct(STLPNT3D v1, STLPNT3D v2);			// è¿”å›ä¸¤ç‚¹å‰ä¹˜
+	STLPNT3D stlOPPNormalVector(STLPNT3D v) ;						// è¿”å›ç‚¹ v æ‰€å¯¹åº”çš„ç›¸åçŸ¢é‡
+	STLPNT3D CreateMTIPoint();										// åˆ›å»ºé»˜è®¤ç‚¹ (0.0,0.0,0.0)
+	STLPNT3D CreateMTIPoint(double ix,double iy,double iz);			// ä» xyz åˆ›ç‚¹
+	STLPNT3D CreateMTIPoint(double p1[]);							// ä»æ•°ç»„åˆ›ç‚¹
+	STLPNT3D CreateMTIPoint(double p1[],int iNbStart);				// ä»æ•°ç»„çš„æŸä½ç½®åˆ›å»ºç‚¹
 	double GetDistanceVertexToCoreOfTrangle(STLPNT3D p, FList face) ;
 
-	void InitFlagAll() ;											// ´Ó EHead ½øÈë, ½«ËùÓĞ Vertex µÄ flag ÖµÎª 0
+	void InitFlagAll() ;											// ä» EHead è¿›å…¥, å°†æ‰€æœ‰ Vertex çš„ flag å€¼ä¸º 0
 	int CalGeodesicLineOne(FList f, double p1[3], double p2[3], PL** polyline) ;	// 
 	int CalGeodesicLineAdj(FList f1, double p1[3], FList f2, double p2[3], double tol, PL** polyline) ;
 	// jh modify
-	// ¼ÆËãÁ½µã¼äµÄ²âµØÏß, ¼ÓÈëÓÅ»¯²¿·Ö
+	// è®¡ç®—ä¸¤ç‚¹é—´çš„æµ‹åœ°çº¿, åŠ å…¥ä¼˜åŒ–éƒ¨åˆ†
 	// opt = 0 no opt, opt = 1 normal opt, opt = 2 LM opt, opt = 3 normal&LM opt
 	int CalGeodesicLine(FList f1, double p1[3], FList f2, double p2[3], double tol, PL** polyline, int opt) ;
 	// added by jh, 2022/09/30
-	// ¼ÆËãÁ½µã¼äµÄ²âµØÏß, ¶ÔÇĞ¸îÆ½ÃæµÄ·½Ïò×ö½øÒ»²½ÓÅ»¯
+	// è®¡ç®—ä¸¤ç‚¹é—´çš„æµ‹åœ°çº¿, å¯¹åˆ‡å‰²å¹³é¢çš„æ–¹å‘åšè¿›ä¸€æ­¥ä¼˜åŒ–
 	int CalGeodesicLineOpt(FList f1, double p1[3], FList f2, double p2[3], double tol, PL** polyline, int opt);
 	// added by jh
-	// ¼ÆËãÁ½µã¼äµÄ²âµØÏß, Ä©¶ËµãÔÚ p21 Óë p22 Ö®¼äÓÎ¶¯
+	// è®¡ç®—ä¸¤ç‚¹é—´çš„æµ‹åœ°çº¿, æœ«ç«¯ç‚¹åœ¨ p21 ä¸ p22 ä¹‹é—´æ¸¸åŠ¨
 	int CalGeodesicLineFloatTail(FList f1, double p1[3], FList f2, double p2[3], double p21[3], double p22[3], double tol, PL** polyline, int opt);
 
 	// added by jh, 2022/11/24
-	// ¼ÆËãÁ½µã¼äµÄ²âµØÏß, ¼ÓÈëÓÅ»¯²¿·Ö, ¼ÓÈëË«Ïò dir ¼ÆËã¼° dir µÄµ¥²½¸üĞÂ
+	// è®¡ç®—ä¸¤ç‚¹é—´çš„æµ‹åœ°çº¿, åŠ å…¥ä¼˜åŒ–éƒ¨åˆ†, åŠ å…¥åŒå‘ dir è®¡ç®—åŠ dir çš„å•æ­¥æ›´æ–°
 	int CalGeodesicLineNew(FList f1, double p1[3], FList f2, double p2[3], double tol, PL** polyline, int opt);
 	// jh add 2022/09/30
-	// ±» CalGeodesicLineOpt µ÷ÓÃ
+	// è¢« CalGeodesicLineOpt è°ƒç”¨
 	int CalGeodesicLineOptTheta(FList f1, double p1[3], FList f2, double p2[3], double theta, double tol, PL** polyline);
 	FList Prj(FList f1, double p1[3], FList f2, double p2[3], double tol, double ptOnLine[3], double ptOnFace[3]) ; // nt add 2022/7/8	
 	int CalGDInfo(POList polys[2], double tol, GDINFO** pGDI) ;
 	FList Pick(PNT3D pos, VEC3D dir, double r, PNT3D p, double* pz, PNT3D gc) ;
 	void Draw(void* pVI, int drawMode) ;
 	// jh add 2022/11/24
-	// ¼ÆËãÁ½µã¼äµÄ²âµØÏß, ½«Æ½¾ù·¨Ê¸È·¶¨µÄÇúÃæ·¨Ê¸Ğı×ª theta, ¼ÓÈëË«Ïò dir ¼ÆËã¼° dir µÄµ¥²½¸üĞÂ
+	// è®¡ç®—ä¸¤ç‚¹é—´çš„æµ‹åœ°çº¿, å°†å¹³å‡æ³•çŸ¢ç¡®å®šçš„æ›²é¢æ³•çŸ¢æ—‹è½¬ theta, åŠ å…¥åŒå‘ dir è®¡ç®—åŠ dir çš„å•æ­¥æ›´æ–°
 	int CalGeodesicLineThetaNew(FList f1, double p1[3], FList f2, double p2[3], double theta, double tol, PL** polyline, int opt);
 	static int calFuncNum;
 	// jh add 2022/11/24
-	// ¼ÆËãÁ½µã¼äµÄ²âµØÏß, ¶ÔÇĞ¸îÆ½ÃæµÄ·½Ïò×ö½øÒ»²½ÓÅ»¯
+	// è®¡ç®—ä¸¤ç‚¹é—´çš„æµ‹åœ°çº¿, å¯¹åˆ‡å‰²å¹³é¢çš„æ–¹å‘åšè¿›ä¸€æ­¥ä¼˜åŒ–
 	int CalGeodesicLineOptNew(FList f1, double p1[3], FList f2, double p2[3], double tol, PL** polyline, int opt);
 	// added by jh, 2022/11/24
-	// ¼ÆËãÁ½µã¼äµÄ²âµØÏß, Ä©¶ËµãÔÚ p21 Óë p22 Ö®¼äÓÎ¶¯
+	// è®¡ç®—ä¸¤ç‚¹é—´çš„æµ‹åœ°çº¿, æœ«ç«¯ç‚¹åœ¨ p21 ä¸ p22 ä¹‹é—´æ¸¸åŠ¨
 	int CalGeodesicLineFloatTailNew(FList f1, double p1[3], FList f2, double p2[3], double p21[3], double p22[3], double tol, PL** polyline, int opt);
 
 	// smf add 2023/01/31
@@ -515,13 +515,13 @@ struct GridModel {
 #define ERROR 0
 #define TRUE 1
 #define FALSE 0
-#define MAXSIZE 20 /* ´æ´¢¿Õ¼ä³õÊ¼·ÖÅäÁ¿ */
+#define MAXSIZE 20 /* å­˜å‚¨ç©ºé—´åˆå§‹åˆ†é…é‡ */
 
 typedef int Status;
-typedef int SElemType; /* SElemTypeÀàĞÍ¸ù¾İÊµ¼ÊÇé¿ö¶ø¶¨£¬ÕâÀï¼ÙÉèÎªint */
+typedef int SElemType; /* SElemTypeç±»å‹æ ¹æ®å®é™…æƒ…å†µè€Œå®šï¼Œè¿™é‡Œå‡è®¾ä¸ºint */
 
 
-/* Á´Õ»½á¹¹ */
+/* é“¾æ ˆç»“æ„ */
 typedef struct StackNode
 {
 	SElemType data;
